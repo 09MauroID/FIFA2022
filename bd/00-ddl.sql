@@ -9,8 +9,8 @@ Contrasena CHAR(64) NOT NULL,
 Nombre VARCHAR(45) NOT NULL,
 Apellido VARCHAR(45) NOT NULL,
 Monedas MEDIUMINT UNSIGNED NOT NULL,
-CONSTRAINT PK_Usuario PRIMARY KEY (idUsuario ASC),
-CONSTRAINT UQ_Usuario_User UNIQUE (nombre ASC)
+CONSTRAINT PK_Usuario PRIMARY KEY (idUsuario),
+CONSTRAINT UQ_Usuario_User UNIQUE (nombre)
 );
 
 CREATE TABLE Habilidad(
@@ -38,7 +38,7 @@ Velocidad TINYINT UNSIGNED NOT NULL,
 Remate TINYINT UNSIGNED NOT NULL,
 Pase TINYINT UNSIGNED NOT NULL,
 Defensa TINYINT UNSIGNED NOT NULL,
-PRIMARY KEY (idFutbolista ASC),
+PRIMARY KEY (idFutbolista),
 CONSTRAINT FK_Futbolista_Posicion FOREIGN KEY (idPosicion)
 	REFERENCES Posicion (idPosicion)
 );
