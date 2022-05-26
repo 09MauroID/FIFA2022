@@ -5,32 +5,32 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPropietario $$
 CREATE PROCEDURE altaPropietario (unIdUsuario INT, unIdFutbolista INT)
 BEGIN
-INSERT INTO Propietario (idUsuario, idFutbolista)
-VALUES (unIdUsuario, unIdFutbolista);
+    INSERT INTO Propietario (idUsuario, idFutbolista)
+        VALUES (unIdUsuario, unIdFutbolista);
 END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPosicion $$
 CREATE PROCEDURE altaPosicion (unIdPosicion INT, unNombre VARCHAR(45))
 BEGIN
-INSERT INTO Posicion (idPosicion, nombre)
-VALUES (unIdPosicion, unNombre);
+    INSERT INTO Posicion (idPosicion, nombre)
+        VALUES (unIdPosicion, unNombre);
 END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaSkill $$
 CREATE PROCEDURE altaSkill (unIdHabilidad INT, unIdFutbolista INT)
 BEGIN
-INSERT INTO Skill (idHabilidad, idFutbolista)
-VALUES (unIdHabilidad, unIdFutbolista);
+    INSERT INTO Skill (idHabilidad, idFutbolista)
+        VALUES (unIdHabilidad, unIdFutbolista);
 END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaUsuario $$
 CREATE PROCEDURE altaUsuario (unIdUsuario INT, unUser VARCHAR(15), unaContrasena CHAR(64), unNombre VARCHAR(45), unApellido VARCHAR(45), unaMonedas MEDIUMINT UNSIGNED)
 BEGIN
-INSERT INTO Usuario (idUsuario, User, Contrasena, Nombre, Apellido, Monedas)
-VALUES (unIdUsuario, unUser, unaContrasena, unNombre, unApellido, unaMonedas);
+    INSERT INTO Usuario (idUsuario, User, Contrasena, Nombre, Apellido, Monedas)
+        VALUES (unIdUsuario, unUser, unaContrasena, unNombre, unApellido, unaMonedas);
 END $$
 
 DELIMITER $$
@@ -38,7 +38,7 @@ DROP PROCEDURE IF EXISTS altaFutbolista $$
 CREATE PROCEDURE altaFutbolista (unIdUsuario INT, unIdFutbolista INT, unIdPosicion INT, unIdHabilidad INT, unNombre VARCHAR(45), unApellido VARCHAR(45), unNacimiento DATE, unaVelocidad TINYINT UNSIGNED, unRemate TINYINT UNSIGNED, unPase TINYINT UNSIGNED, unaDefensa TINYINT UNSIGNED)
 BEGIN
 	INSERT INTO Futbolista (idUsuario, idFutbolista, idPosicion, idHabilidad, Nombre, Apellido, Nacimiento, Velocidad, Remate, Pase, Defensa)
-			VALUES (unIdUsuario, unIdFutbolista, unIdPosicion, unIdHabilidad, unNombre, unApellido, unNacimiento, unaVelocidad, unRemate, unPase,unaDefensa);
+		VALUES (unIdUsuario, unIdFutbolista, unIdPosicion, unIdHabilidad, unNombre, unApellido, unNacimiento, unaVelocidad, unRemate, unPase,unaDefensa);
 END $$
 
 DELIMITER $$
@@ -46,7 +46,7 @@ DROP PROCEDURE IF EXISTS altaHabilidad $$
 CREATE PROCEDURE altaHabilidad (unIdHabilidad INT, unNombre VARCHAR(45), unaDescripcion VARCHAR(45))
 BEGIN
 	INSERT INTO Habilidad (idHabilidad, Nombre, Descripcion)
-			VALUES (unIdHabilidad, unNombre, unaDescripcion);
+		VALUES (unIdHabilidad, unNombre, unaDescripcion);
 END $$
 
 
@@ -56,7 +56,7 @@ DROP PROCEDURE IF EXISTS Publicar $$
 CREATE PROCEDURE Publicar(unIdVendedor INT, unIdFutbolista INT, unPrecioMonedas MEDIUMINT UNSIGNED, unaPublicacion DATETIME)
 BEGIN
 	INSERT INTO Transferencia (idVendedor, idComprador, Publicacion, Confirmacion, idFutbolista, PrecioMonedas)
-			VALUES(unIdVendedor, NULL, unaPublicacion, NULL, unIdFutbolista, unPrecioMonedas);
+		VALUES(unIdVendedor, NULL, unaPublicacion, NULL, unIdFutbolista, unPrecioMonedas);
 END $$
 
 DELIMITER $$
@@ -81,7 +81,7 @@ BEGIN
     SET idUsuario = unidComprador
     WHERE idFutbolista = unIdFutbolista
 	AND idUsuario = unIdVendedor;
-   
+
     UPDATE Usuario
     SET Monedas = Monedas + varMonedas
     WHERE idUsuario = unIdVendedor;
@@ -89,7 +89,7 @@ BEGIN
     UPDATE Usuario
     SET Monedas = Monedas - varMonedas
     WHERE idUsuario = unidComprador;
-   
+
 END $$
 
 
@@ -117,6 +117,6 @@ BEGIN
     FROM    Transferencia
     WHERE   idFutbolista = unIdFutbolista
     AND     Confirmacion BETWEEN Inicio AND Fin;
-   
+
     RETURN  sumatoria;
 END $$
