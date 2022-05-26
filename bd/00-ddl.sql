@@ -38,9 +38,9 @@ Velocidad TINYINT UNSIGNED NOT NULL,
 Remate TINYINT UNSIGNED NOT NULL,
 Pase TINYINT UNSIGNED NOT NULL,
 Defensa TINYINT UNSIGNED NOT NULL,
-PRIMARY KEY (idFutbolista),
+PRIMARY KEY (idFutbolista ASC),
 CONSTRAINT FK_Futbolista_Posicion FOREIGN KEY (idPosicion)
-	REFERENCES Posicion (idPosicion)
+REFERENCES Posicion (idPosicion)
 );
 
 CREATE TABLE Propietario(
@@ -48,9 +48,9 @@ idUsuario INT NOT NULL,
 idFutbolista INT NOT NULL,
 PRIMARY KEY (idUsuario, idFutbolista),
 CONSTRAINT FK_Propietario_Usuario FOREIGN KEY (idUsuario)
-	REFERENCES Usuario (idUsuario),
+REFERENCES Usuario (idUsuario),
 CONSTRAINT FK_Propietario_Futbolista FOREIGN KEY (idFutbolista)
-	REFERENCES Futbolista (idFutbolista)
+REFERENCES Futbolista (idFutbolista)
 );
 
 CREATE TABLE Skill(
@@ -58,21 +58,21 @@ idHabilidad INT NOT NULL,
 idFutbolista INT NOT NULL,
 PRIMARY KEY (idHabilidad, idFutbolista),
 CONSTRAINT FK_Skill_Habilidad FOREIGN KEY (idHabilidad)
-	REFERENCES Habilidad (idHabilidad),
+REFERENCES Habilidad (idHabilidad),
 CONSTRAINT FK_Skill_Futbolista FOREIGN KEY (idFutbolista)
-	REFERENCES Futbolista (idFutbolista)
+REFERENCES Futbolista (idFutbolista)
 );
 
 CREATE TABLE Transferencia(
 idVendedor INT NOT NULL,
-idComprador INT NOT NULL,
+idComprador INT NULL,
 idFutbolista INT NOT NULL,
 Publicacion DATETIME NOT NULL,
-Confirmacion DATETIME NOT NULL,
-PreciosMonedas MEDIUMINT UNSIGNED NOT NULL,
-PRIMARY KEY (idVendedor, idFutbolista),
+Confirmacion DATETIME NULL,
+PrecioMonedas MEDIUMINT UNSIGNED NOT NULL,
+PRIMARY KEY (idVendedor, idFutbolista, Publicacion),
 CONSTRAINT FK_TransferenciaVendedor_Usuario FOREIGN KEY (idVendedor)
-	REFERENCES Usuario (idUsuario),
+REFERENCES Usuario (idUsuario),
 CONSTRAINT FK_Transferencia_Futbolista FOREIGN KEY (idFutbolista)
-	REFERENCES Futbolista (idFutbolista)
+REFERENCES Futbolista (idFutbolista)
 );
