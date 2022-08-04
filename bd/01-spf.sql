@@ -35,10 +35,10 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolista $$
-CREATE PROCEDURE altaFutbolista (unIdUsuario INT, unIdFutbolista INT, unIdPosicion INT, unIdHabilidad INT, unNombre VARCHAR(45), unApellido VARCHAR(45), unNacimiento DATE, unaVelocidad TINYINT UNSIGNED, unRemate TINYINT UNSIGNED, unPase TINYINT UNSIGNED, unaDefensa TINYINT UNSIGNED)
+CREATE PROCEDURE altaFutbolista (unIdFutbolista INT, unIdPosicion INT, unIdHabilidad INT, unNombre VARCHAR(45), unApellido VARCHAR(45), unNacimiento DATE, unaVelocidad TINYINT UNSIGNED, unRemate TINYINT UNSIGNED, unPase TINYINT UNSIGNED, unaDefensa TINYINT UNSIGNED)
 BEGIN
-	INSERT INTO Futbolista (idUsuario, idFutbolista, idPosicion, idHabilidad, Nombre, Apellido, Nacimiento, Velocidad, Remate, Pase, Defensa)
-		VALUES (unIdUsuario, unIdFutbolista, unIdPosicion, unIdHabilidad, unNombre, unApellido, unNacimiento, unaVelocidad, unRemate, unPase,unaDefensa);
+	INSERT INTO Futbolista (idFutbolista, idPosicion, idHabilidad, Nombre, Apellido, Nacimiento, Velocidad, Remate, Pase, Defensa)
+		VALUES (unIdFutbolista, unIdPosicion, unIdHabilidad, unNombre, unApellido, unNacimiento, unaVelocidad, unRemate, unPase,unaDefensa);
 END $$
 
 DELIMITER $$
@@ -100,7 +100,7 @@ CREATE PROCEDURE TransferenciasActivas (unidFutbolista INT)
 BEGIN
 SELECT *
 FROM Transferencia
-WHERE Confirmacion = NULL
+WHERE Confirmacion IS NULL
 AND idFutbolista = unidFutbolista;
 END $$
 
@@ -120,3 +120,16 @@ BEGIN
 
     RETURN  sumatoria;
 END $$
+
+DELIMITER $$
+DROP FUNCTION IF EXISTS posesionUsuario $$
+CREATE FUNCTION posesionUsuario (unIdUsuario INT, unIdFutbolista INT) RETURNS BOOL READS SQL DATA
+BEGIN
+    IF (EXISTS (SELECT *
+            FROM Propietario
+            WHERE idUsuario = unIdUsuario
+            AND idFutbolista = unIdFutbolista)) THEN
+        RETURN TRUE;
+    END IF;
+    RETURN FALSE;
+END$$
