@@ -18,12 +18,12 @@ BEGIN
             WHERE idUsuario = NEW.idComprador
             AND Monedas < PrecioMonedas)) THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Monedas insuficientes'
+        SET MESSAGE_TEXT = 'Monedas insuficientes';
     END IF;
 
     IF (posesionUsuario(NEW.idComprador, NEW.idFutbolista)) THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Jugador en posesión'
+        SET MESSAGE_TEXT = 'Jugador en posesión';
     END IF;
 END$$
 
