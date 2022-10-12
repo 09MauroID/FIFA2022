@@ -9,11 +9,11 @@ public class Futbolista
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public DateTime Nacimiento { get; set; }
-    public int Velocidad { get; set; }
-    public int Remate { get; set; }
-    public int Pase { get; set; }
-    public int Defensa { get; set; }
-    public Futbolista(Usuario usuario, int idFutbolista, Posicion posicion, Habilidad habilidad, string nombre, string apellido, DateTime nacimiento, int velocidad, int remate, int pase, int defensa)
+    public byte Velocidad { get; set; }
+    public byte Remate { get; set; }
+    public byte Pase { get; set; }
+    public byte Defensa { get; set; }
+    public Futbolista(Usuario usuario, int idFutbolista, Posicion posicion, Habilidad habilidad, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
     {
         IdFutbolista = idFutbolista;
         Nombre = nombre;
