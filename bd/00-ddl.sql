@@ -14,14 +14,14 @@ CONSTRAINT UQ_Usuario_User UNIQUE (nombre)
 );
 
 CREATE TABLE Habilidad(
-idHabilidad INT NOT NULL,
+idHabilidad TINYINT UNSIGNED NOT NULL,
 Nombre VARCHAR (45) NOT NULL,
 Descripcion VARCHAR (45) NOT NULL,
 CONSTRAINT PK_Habilidad PRIMARY KEY (idHabilidad)
 );
 
 CREATE TABLE Posicion(
-idPosicion INT NOT NULL,
+idPosicion TINYINT UNSIGNED NOT NULL,
 Nombre VARCHAR(45) NOT NULL,
 CONSTRAINT Pk_Posicion PRIMARY KEY (idPosicion)
 );
