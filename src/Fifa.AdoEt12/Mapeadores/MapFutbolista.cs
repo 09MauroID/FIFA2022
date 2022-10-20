@@ -80,3 +80,4 @@ public class MapFutbolista : Mapeador<Futbolista>
     }
     public List<Futbolista> ObtenerFutbolistas() => ColeccionDesdeTabla();
 }
+ #terminado.
