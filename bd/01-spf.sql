@@ -49,6 +49,14 @@ BEGIN
 		VALUES (unIdHabilidad, unNombre, unaDescripcion);
 END $$
 
+# Nuevo SP
+DROP PROCEDURE IF EXISTS UsuarioPorIdUsuario $$
+CREATE PROCEDURE UsuarioPorIdUsuario(unIdUsuario INT)
+BEGIN
+    SELECT *
+    FROM Usuario
+    WHERE idUsuario = unIdUsuario;
+END $$
 
 -- PUNTO 2
 DELIMITER $$
