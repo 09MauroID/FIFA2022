@@ -27,10 +27,11 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaUsuario $$
-CREATE PROCEDURE altaUsuario (unIdUsuario INT, unUser VARCHAR(15), unaContrasena CHAR(64), unNombre VARCHAR(45), unApellido VARCHAR(45), unaMonedas MEDIUMINT UNSIGNED)
+CREATE PROCEDURE altaUsuario (out unIdUsuario INT, unUser VARCHAR(15), unaContrasena CHAR(64), unNombre VARCHAR(45), unApellido VARCHAR(45), unaMonedas MEDIUMINT UNSIGNED)
 BEGIN
     INSERT INTO Usuario (idUsuario, User, Contrasena, Nombre, Apellido, Monedas)
         VALUES (unIdUsuario, unUser, unaContrasena, unNombre, unApellido, unaMonedas);
+        set unIdUsuario = LAST_INSERT_ID();
 END $$
 
 DELIMITER $$

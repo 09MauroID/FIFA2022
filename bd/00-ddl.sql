@@ -3,7 +3,7 @@ CREATE DATABASE Fifa;
 USE Fifa;
 
 CREATE TABLE Usuario(
-idUsuario INT,
+idUsuario INT auto_increment,
 USER VARCHAR(15) NOT NULL,
 Contrasena CHAR(64) NOT NULL,
 Nombre VARCHAR(45) NOT NULL,
