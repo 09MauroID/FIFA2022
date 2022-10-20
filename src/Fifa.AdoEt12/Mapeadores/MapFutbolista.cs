@@ -11,7 +11,7 @@ public class MapFutbolista : Mapeador<Futbolista>
         Tabla = "Futbolista";
     }
     public override Futbolista ObjetoDesdeFila(DataRow fila) 
-        => new Futbolista
+        => new Futbolista()
     {
         IdFutbolista = Convert.ToInt32(fila["idFutbolista"]),
         Nombre = fila["nombre"].ToString(),
@@ -80,4 +80,3 @@ public class MapFutbolista : Mapeador<Futbolista>
     }
     public List<Futbolista> ObtenerFutbolistas() => ColeccionDesdeTabla();
 }
- #terminado.

@@ -21,7 +21,7 @@ namespace Fifa.AdoEt12.Mapeadores;
             IdHabilidad: Convert.ToByte(fila["idHabilidad"]),
 
             Nombre: fila["Nombre"].ToString(),
-            Descripcion: fila["Descripcion"].ToString(),
+            Descripcion: fila["Descripcion"].ToString()
         )
         {
             Nombre = fila["Habilidad"].ToString(),

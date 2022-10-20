@@ -50,7 +50,7 @@ BEGIN
 		VALUES (unIdHabilidad, unNombre, unaDescripcion);
 END $$
 
-# Nuevo SP
+# Nuevo SP Usuario
 DROP PROCEDURE IF EXISTS UsuarioPorIdUsuario $$
 CREATE PROCEDURE UsuarioPorIdUsuario(unIdUsuario INT)
 BEGIN
