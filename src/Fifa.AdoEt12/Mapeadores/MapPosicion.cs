@@ -19,11 +19,19 @@ namespace Fifa.AdoEt12.Mapeadores
             => new Posicion
             (
                 idPosicion: Convert.ToByte(fila["idPosicion"]),
+<<<<<<< Updated upstream
                 nombre: fila["nombre"].ToString(),
             )
             {
 
                 Nombre = fila["posicion"].ToString(),
+=======
+                nombre: fila["nombre"].ToString()
+            )
+            {
+
+                Nombre = fila["posicion"].ToString()
+>>>>>>> Stashed changes
             };
         public void AltaPosicion(Posicion posicion)
             => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
