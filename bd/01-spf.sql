@@ -123,7 +123,6 @@ BEGIN
     UPDATE Usuario
     SET Monedas = Monedas - varMonedas
     WHERE idUsuario = unidComprador;
-
 END $$
 
 
