@@ -8,27 +8,33 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Fifa.AdoEt12.Mapeadores;
-{
+
     public class MapHabilidad : Mapeador<Habilidad>
 {
-    public MapHabilidad(AdoAGBD ADO) : base(ado)
+    public MapHabilidad(AdoAGBD ADO) : base(ADO)
     {
         Tabla = "Habilidad";
     }
     public override Habilidad ObjetoDesdeFila(DataRow fila)
         => new Habilidad
         (
-            IdHabilidad: Convert.ToByte(fila["idHabilidad"]),
+            idHabilidad: Convert.ToByte(fila["idHabilidad"]),
 
-            Nombre: fila["Nombre"].ToString(),
-            Descripcion: fila["Descripcion"].ToString()
+            nombre: fila["Nombre"].ToString(),
+            descripcion: fila["Descripcion"].ToString()
         )
         {
             Nombre = fila["Habilidad"].ToString(),
             Descripcion = fila["Habilidad"].ToString(),
         };
-    public void AltaHabilidad(Posicion posicion)
-        => EjecutarComandoCon("AltaHablidad", ConfigurarAltaHabilidad, PostAltaHabilidad, Habilidad);
+    public void AltaHabilidad(Habilidad habilidad)
+        => EjecutarComandoCon("altaHablidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
+
+    private void PostAltaHabilidad(Habilidad obj)
+    {
+        throw new NotImplementedException();
+    }
+
     public void ConfigurarAltaHabilidad(Habilidad habilidad)
     {
         SetComandoSP("AltaHabilidad");
@@ -44,9 +50,24 @@ namespace Fifa.AdoEt12.Mapeadores;
             .SetValor(habilidad.Descripcion)
             .AgregarParametro();
     }
-    public void PostAltaHabilidad(Habilidad habilidad)
+    public void PostAltahabilidad(Habilidad habilidad)
+        {
+            var paramIdHabilidad = GetParametro("unIdHabilidad");
+            habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad.Value);
+        }
 
-}
+        public Habilidad HabilidadPorIdHabilidad(byte idHabilidad)
+        {
+            SetComandoSP("HabilidadPorIdHabilidad");
 
+        BP.CrearParametro("unIdHabilidad")
+        .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+        .SetValor(idHabilidad)
+        .AgregarParametro();
 
-}
+            return ElementoDesdeSP();
+        }
+
+        public List<Habilidad> ObtenerHabilidad() => ColeccionDesdeTabla();
+    }
+

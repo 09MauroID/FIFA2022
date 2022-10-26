@@ -6,8 +6,6 @@ using System.Data;
 namespace Fifa.AdoEt12.Mapeadores;
 public class MapPosicion : Mapeador<Posicion>
 {
-    public class MapPosicion: Mapeador<Posicion>
-    {
         public MapPosicion(AdoAGBD ado):base(ado)
         {
             Tabla = "Posicion";
@@ -54,3 +52,4 @@ public class MapPosicion : Mapeador<Posicion>
         public List<Posicion> ObtenerPosicion() => ColeccionDesdeTabla();
 
 }
+
