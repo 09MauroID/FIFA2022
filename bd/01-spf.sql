@@ -59,6 +59,31 @@ BEGIN
     WHERE idUsuario = unIdUsuario;
 END $$
 
+# Nuevo SP Futbolista
+DROP PROCEDURE IF EXISTS FutbolistaPorIdFutbolista $$
+CREATE PROCEDURE FutbolistaPorIdFutbolista(unIdFutbolista INT)
+BEGIN
+    SELECT *
+    FROM Futbolista
+    WHERE idFutbolista = unIdFutbolista;
+END $$
+
+DROP PROCEDURE IF EXISTS PosicionPorIdPosicion $$
+CREATE PROCEDURE PosicionPorIdPosicion(unIdPosicion INT)
+BEGIN
+    SELECT *
+    FROM Posicion
+    WHERE idPosicion = unIdPosicion;
+END $$
+
+DROP PROCEDURE IF EXISTS HabilidadPorIdHabilidad $$
+CREATE PROCEDURE HabilidadPorIdHabilidad(unIdHabilidad INT)
+BEGIN
+    SELECT *
+    FROM Habilidad
+    WHERE idHabilidad = unIdHabilidad;
+END $$
+
 -- PUNTO 2
 DELIMITER $$
 DROP PROCEDURE IF EXISTS Publicar $$
