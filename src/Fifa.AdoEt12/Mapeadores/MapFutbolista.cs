@@ -6,9 +6,11 @@ using System.Data;
 namespace Fifa.AdoEt12.Mapeadores;
 public class MapFutbolista : Mapeador<Futbolista>
 {
-    public MapFutbolista(AdoAGBD ado):base(ado) 
+    public MapPosicion MapPosicion { get; set; }
+    public MapFutbolista(MapPosicion mapPosicion):base(mapPosicion.AdoAGBD) 
     {
         Tabla = "Futbolista";
+        MapPosicion = mapPosicion;
     }
     public override Futbolista ObjetoDesdeFila(DataRow fila) 
         => new Futbolista()
@@ -20,7 +22,8 @@ public class MapFutbolista : Mapeador<Futbolista>
         Velocidad = Convert.ToByte(fila["velocidad"]),
         Remate = Convert.ToByte(fila["remate"]),
         Pase = Convert.ToByte(fila["pase"]),
-        Defensa = Convert.ToByte(fila["defensa"])
+        Defensa = Convert.ToByte(fila["defensa"]),
+        Posicion = MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
     };
     public void AltaFutbolista(Futbolista futbolista)
         => EjecutarComandoCon("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
