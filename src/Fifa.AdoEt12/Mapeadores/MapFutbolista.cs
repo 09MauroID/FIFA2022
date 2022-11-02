@@ -1,6 +1,5 @@
 using Fifa.Core;
 using et12.edu.ar.AGBD.Mapeadores;
-using et12.edu.ar.AGBD.Ado;
 using System.Data;
 
 namespace Fifa.AdoEt12.Mapeadores;
@@ -82,4 +81,24 @@ public class MapFutbolista : Mapeador<Futbolista>
             return ElementoDesdeSP();
     }
     public List<Futbolista> ObtenerFutbolistas() => ColeccionDesdeTabla();
+    public List<Futbolista> FutbolistasDe(Usuario usuario)
+    {
+        /* Paso 1; saber que futbolistas posee el usuario, esa informacion
+        la tiene la Tabla Propietario, pero de todas sus filas, solo me
+        interesa las de un determinado idUsuario  */
+        var tablaPropietario = FilasFiltradasRAW("idUsuario", usuario.IdUsuario, "Propietario");
+        var futbolistas = new List<Futbolista>();
+
+        /*Paso 2: Recorrer las filas de la tabla devuelta, quedarme con el idFutbolista de cada fila
+        devuelta y usarlo para FiltrarPorPK
+        */
+        for (int i = 0; i < tablaPropietario.Rows.Count; i++)
+        {
+            var idFutbolista = Convert.ToInt32(tablaPropietario.Rows[i]["idFutbolista"]);
+            futbolistas.Add(FiltrarPorPK("idFutbolista", idFutbolista)!);
+        }
+
+        //Devuelvo la lista que cree y complete.
+        return futbolistas;
+    }
 }
