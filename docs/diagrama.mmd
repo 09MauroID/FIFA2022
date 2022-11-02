@@ -1,0 +1,48 @@
+classDiagram
+Usuario
+
+    class Usuario
+    Usuario: +idUsuario
+    Usuario: +User
+    Usuario: +Contrasena
+    Usuario: +Nombre
+    Usuario: +Apellido
+    Usuario: +Monedas
+
+    class Propietario
+    Propietario: +idUsuario
+    Propietario: +idFutbolista
+
+    class Futbolista
+    Futbolista: +idUsuario
+    Futbolista: +idFutbolista
+    Futbolista: +idPosicion
+    Futbolista: +idHabilidad
+    Futbolista: +Nombre
+    Futbolista: +Apellido
+    Futbolista: +Naciomiento
+    Futbolista: +Velocidad
+    Futbolista: +Remate
+    Futbolista: +Pase
+    Futbolista: +Defensa
+
+    class Transferencia
+    Transferencia: +idVendedor
+    Transferencia: +idComprador
+    Transferencia: +idFutbolista
+    Transferencia: +Publicacion
+    Transferencia: +Confirmacion
+    Transferencia: +PrecioMonedas
+
+    class Posicion
+    Posicion: +idPosicion
+    Posicion: +Nombre
+
+    class Skill
+    Skill: +idHabilidad
+    Skill: +idFutbolista
+
+    class Habilidad
+    Habilidad: +idHabilidad
+    Habilidad: +Nombre
+    Habilidad: +Descripcion

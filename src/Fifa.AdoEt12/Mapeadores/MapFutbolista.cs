@@ -6,13 +6,28 @@ namespace Fifa.AdoEt12.Mapeadores;
 public class MapFutbolista : Mapeador<Futbolista>
 {
     public MapPosicion MapPosicion { get; set; }
-    public MapFutbolista(MapPosicion mapPosicion):base(mapPosicion.AdoAGBD) 
+    public MapUsuario MapUsuario { get; set; }
+    public MapFutbolista(MapPosicion mapPosicion):base(mapPosicion.AdoAGBD) {}
+    public MapFutbolista(MapUsuario mapUsuario):base(mapUsuario.AdoAGBD) 
     {
         Tabla = "Futbolista";
         MapPosicion = mapPosicion;
+        MapUsuario = mapUsuario;
     }
     public override Futbolista ObjetoDesdeFila(DataRow fila) 
-        => new Futbolista()
+        => new Futbolista
+        (
+            idUsuario
+            idFutbolista: Convert.ToInt32(fila["idFutbolista"]),
+            nombre: fila["nombre"].ToString(),
+            apellido: fila["apellido"].ToString(),
+            nacimiento: Convert.ToDateTime(fila["nacimiento"]),
+            velocidad: Convert.ToByte(fila["velocidad"]),
+            remate: Convert.ToByte(fila["remate"]),
+            pase: Convert.ToByte(fila["pase"]),
+            defensa: Convert.ToByte(fila["defensa"]),
+            posicion: MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
+        )
     {
         IdFutbolista = Convert.ToInt32(fila["idFutbolista"]),
         Nombre = fila["nombre"].ToString(),

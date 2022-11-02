@@ -29,7 +29,6 @@ CONSTRAINT Pk_Posicion PRIMARY KEY (idPosicion)
 CREATE TABLE Futbolista(
 idFutbolista INT NOT NULL,
 idPosicion INT NOT NULL,
-idHabilidad INT NOT NULL,
 Nombre VARCHAR (45) NOT NULL,
 Apellido VARCHAR (45) NOT NULL,
 Nacimiento DATE NOT NULL,

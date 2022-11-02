@@ -22,11 +22,19 @@ public class MapTransferencia : Mapeador<Transferencia>
         MapFutbolista = mapFutbolista;
     }
     public override Transferencia ObjetoDesdeFila(DataRow fila)
-    => new Transferencia()
+    => new Transferencia
+    (
+        vendedor : MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idVendedor"])),
+        comprador : MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idComprador"])),
+        futbolista : MapFutbolista.FutbolistaPorId(Convert.ToInt32(fila["idFutbolista"])),
+        publicacion : Convert.ToDateTime(fila["publicacion"]),
+        confirmacion : Convert.ToDateTime(fila["confirmacion"]),
+        preciomonedas : Convert.ToInt32(fila["preciomonedas"])
+    )
     {
         Vendedor = MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idVendedor"])),
         Comprador = MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idComprador"])),
-        Futbolista = MapFutbolista.FutbolistaPorIdFutbolista(Convert.ToInt32(fila["idFutbolista"])),
+        Futbolista = MapFutbolista.FutbolistaPorId(Convert.ToInt32(fila["idFutbolista"])),
         Publicacion = Convert.ToDateTime(fila["publicacion"]),
         Confirmacion = Convert.ToDateTime(fila["confirmacion"]),
         PrecioMonedas = Convert.ToInt32(fila["preciomonedas"])
@@ -66,7 +74,7 @@ public class MapTransferencia : Mapeador<Transferencia>
     public void PostPublicar(Transferencia transferencia)
     {
         var paramIdVendedor = GetParametro("unIdVendedor");
-        transferencia.Vendedor = Convert.ToInt32(GetParametro("unIdVendedor"))
+        transferencia.Vendedor = Convert.ToInt32(GetParametro(paramIdVendedor.Value));
     }
     public Transferencia VendedorPorId(int id)
     {
