@@ -1,15 +1,11 @@
 using Fifa.Core;
 using et12.edu.ar.AGBD.Mapeadores;
 using et12.edu.ar.AGBD.Ado;
-using System;
 using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fifa.AdoEt12.Mapeadores;
 
-    public class MapHabilidad : Mapeador<Habilidad>
+public class MapHabilidad : Mapeador<Habilidad>
 {
     public MapHabilidad(AdoAGBD ADO) : base(ADO)
     {
@@ -30,9 +26,10 @@ namespace Fifa.AdoEt12.Mapeadores;
     public void AltaHabilidad(Habilidad habilidad)
         => EjecutarComandoCon("altaHablidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
 
-    private void PostAltaHabilidad(Habilidad obj)
+    private void PostAltaHabilidad(Habilidad habilidad)
     {
-        throw new NotImplementedException();
+        var paramIdHabilidad = GetParametro("unIdHabilidad");
+        habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad);
     }
 
     public void ConfigurarAltaHabilidad(Habilidad habilidad)
@@ -51,23 +48,44 @@ namespace Fifa.AdoEt12.Mapeadores;
             .AgregarParametro();
     }
     public void PostAltahabilidad(Habilidad habilidad)
-        {
-            var paramIdHabilidad = GetParametro("unIdHabilidad");
-            habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad.Value);
-        }
+    {
+        var paramIdHabilidad = GetParametro("unIdHabilidad");
+        habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad.Value);
+    }
 
-        public Habilidad HabilidadPorIdHabilidad(byte idHabilidad)
-        {
-            SetComandoSP("HabilidadPorIdHabilidad");
+    public Habilidad HabilidadPorIdHabilidad(byte idHabilidad)
+    {
+        SetComandoSP("HabilidadPorIdHabilidad");
 
         BP.CrearParametro("unIdHabilidad")
         .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
         .SetValor(idHabilidad)
         .AgregarParametro();
 
-            return ElementoDesdeSP();
+        return ElementoDesdeSP();
+    }
+
+    public List<Habilidad> ObtenerHabilidad() => ColeccionDesdeTabla();
+
+    public List<Habilidad> HabilidadesDe(Futbolista futbolista)
+    {
+        /* Paso 1; saber que futbolistas posee el usuario, esa informacion
+        la tiene la Tabla Propietario, pero de todas sus filas, solo me
+        interesa las de un determinado idUsuario  */
+        var tablaSkill = FilasFiltradasRAW("idFutbolista", futbolista.IdFutbolista, "Skill");
+        var habilidades = new List<Habilidad>();
+
+        /*Paso 2: Recorrer las filas de la tabla devuelta, quedarme con el idFutbolista de cada fila
+        devuelta y usarlo para FiltrarPorPK
+        */
+        for (int i = 0; i < tablaSkill.Rows.Count; i++)
+        {
+            var idHabilidad = Convert.ToInt32(tablaSkill.Rows[i]["idHabilidad"]);
+            habilidades.Add(FiltrarPorPK("idHabilidad", idHabilidad)!);
         }
 
-        public List<Habilidad> ObtenerHabilidad() => ColeccionDesdeTabla();
+        //Devuelvo la lista que cree y complete.
+        return habilidades;
     }
+}
 
