@@ -1,48 +1,55 @@
 classDiagram
-Usuario
+direction LR
+Usuario *-- Propietario
+Usuario o-- Transferencia
+Propietario *-- Futbolista
+Transferencia *-- Futbolista
+Futbolista *-- Skill
+Skill *-- Habilidad
+Futbolista *-- Posicion
 
     class Usuario
-    Usuario: +idUsuario
-    Usuario: +User
-    Usuario: +Contrasena
-    Usuario: +Nombre
-    Usuario: +Apellido
-    Usuario: +Monedas
+    Usuario: +idUsuario int
+    Usuario: +User string
+    Usuario: +Contrasena string
+    Usuario: +Nombre string
+    Usuario: +Apellido string
+    Usuario: +Monedas uint
 
     class Propietario
-    Propietario: +idUsuario
-    Propietario: +idFutbolista
+    Propietario: +idUsuario int
+    Propietario: +idFutbolista int
 
     class Futbolista
-    Futbolista: +idUsuario
-    Futbolista: +idFutbolista
-    Futbolista: +idPosicion
-    Futbolista: +idHabilidad
-    Futbolista: +Nombre
-    Futbolista: +Apellido
-    Futbolista: +Naciomiento
-    Futbolista: +Velocidad
-    Futbolista: +Remate
-    Futbolista: +Pase
-    Futbolista: +Defensa
+    Futbolista: +idUsuario int
+    Futbolista: +idFutbolista int
+    Futbolista: +idPosicion int
+    Futbolista: +idHabilidad int
+    Futbolista: +Nombre string
+    Futbolista: +Apellido string
+    Futbolista: +Naciomiento DateTime
+    Futbolista: +Velocidad byte
+    Futbolista: +Remate byte
+    Futbolista: +Pase byte
+    Futbolista: +Defensa byte
 
     class Transferencia
-    Transferencia: +idVendedor
-    Transferencia: +idComprador
-    Transferencia: +idFutbolista
-    Transferencia: +Publicacion
-    Transferencia: +Confirmacion
-    Transferencia: +PrecioMonedas
+    Transferencia: +idVendedor int
+    Transferencia: +idComprador int
+    Transferencia: +idFutbolista int
+    Transferencia: +Publicacion DateTime
+    Transferencia: +Confirmacion DateTime
+    Transferencia: +PrecioMonedas uint
 
     class Posicion
-    Posicion: +idPosicion
-    Posicion: +Nombre
+    Posicion: +idPosicion int
+    Posicion: +Nombre string
 
     class Skill
-    Skill: +idHabilidad
-    Skill: +idFutbolista
+    Skill: +idHabilidad int
+    Skill: +idFutbolista int
 
     class Habilidad
-    Habilidad: +idHabilidad
-    Habilidad: +Nombre
-    Habilidad: +Descripcion
+    Habilidad: +idHabilidad int
+    Habilidad: +Nombre string
+    Habilidad: +Descripcion string

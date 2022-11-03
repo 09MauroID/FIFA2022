@@ -73,9 +73,9 @@ namespace Fifa.AdoEt12.Mapeadores
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .SetValor(IdUsuario)
             .AgregarParametro();
-            
+
             return ElementoDesdeSP();
         }
-        public List<Usuario> ObtenerUsuarios()=>ColeccionDesdeTabla();
+        public List<Usuario> ObtenerUsuarios() => ColeccionDesdeTabla();
     }
 }

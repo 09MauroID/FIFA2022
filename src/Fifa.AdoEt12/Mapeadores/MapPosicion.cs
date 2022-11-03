@@ -14,7 +14,7 @@ public class MapPosicion : Mapeador<Posicion>
         => new Posicion
         (
             idPosicion: Convert.ToByte(fila["idPosicion"]),
-            nombre: fila["nombre"].ToString()
+            nombre : fila["nombre"].ToString()
         )
         {
 

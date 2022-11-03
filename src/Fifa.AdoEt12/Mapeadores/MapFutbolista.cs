@@ -7,17 +7,15 @@ public class MapFutbolista : Mapeador<Futbolista>
 {
     public MapPosicion MapPosicion { get; set; }
     public MapUsuario MapUsuario { get; set; }
-    public MapFutbolista(MapPosicion mapPosicion):base(mapPosicion.AdoAGBD) {}
-    public MapFutbolista(MapUsuario mapUsuario):base(mapUsuario.AdoAGBD) 
+    public MapFutbolista(MapUsuario mapUsuario) : base(mapUsuario.AdoAGBD)
     {
         Tabla = "Futbolista";
-        MapPosicion = mapPosicion;
         MapUsuario = mapUsuario;
     }
-    public override Futbolista ObjetoDesdeFila(DataRow fila) 
+    public override Futbolista ObjetoDesdeFila(DataRow fila)
         => new Futbolista
         (
-            idUsuario
+            idUsuario: Convert.ToInt32(fila["idFutbolista"]),
             idFutbolista: Convert.ToInt32(fila["idFutbolista"]),
             nombre: fila["nombre"].ToString(),
             apellido: fila["apellido"].ToString(),
@@ -28,20 +26,20 @@ public class MapFutbolista : Mapeador<Futbolista>
             defensa: Convert.ToByte(fila["defensa"]),
             posicion: MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
         )
-    {
-        IdFutbolista = Convert.ToInt32(fila["idFutbolista"]),
-        Nombre = fila["nombre"].ToString(),
-        Apellido = fila["apellido"].ToString(),
-        Nacimiento = Convert.ToDateTime(fila["nacimiento"]),
-        Velocidad = Convert.ToByte(fila["velocidad"]),
-        Remate = Convert.ToByte(fila["remate"]),
-        Pase = Convert.ToByte(fila["pase"]),
-        Defensa = Convert.ToByte(fila["defensa"]),
-        Posicion = MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
-    };
+        {
+            IdFutbolista = Convert.ToInt32(fila["idFutbolista"]),
+            Nombre = fila["nombre"].ToString(),
+            Apellido = fila["apellido"].ToString(),
+            Nacimiento = Convert.ToDateTime(fila["nacimiento"]),
+            Velocidad = Convert.ToByte(fila["velocidad"]),
+            Remate = Convert.ToByte(fila["remate"]),
+            Pase = Convert.ToByte(fila["pase"]),
+            Defensa = Convert.ToByte(fila["defensa"]),
+            Posicion = MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
+        };
     public void AltaFutbolista(Futbolista futbolista)
         => EjecutarComandoCon("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
-    
+
     public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {
         SetComandoSP("altaFutbolista");
@@ -61,7 +59,7 @@ public class MapFutbolista : Mapeador<Futbolista>
         BP.CrearParametro("unNacimiento")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Date)
             .AgregarParametro();
-        
+
         BP.CrearParametro("unVelocidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .AgregarParametro();
@@ -93,7 +91,7 @@ public class MapFutbolista : Mapeador<Futbolista>
             .SetValor(id)
             .AgregarParametro();
 
-            return ElementoDesdeSP();
+        return ElementoDesdeSP();
     }
     public List<Futbolista> ObtenerFutbolistas() => ColeccionDesdeTabla();
     public List<Futbolista> FutbolistasDe(Usuario usuario)
