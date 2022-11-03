@@ -7,6 +7,7 @@ public class MapFutbolista : Mapeador<Futbolista>
 {
     public MapPosicion MapPosicion { get; set; }
     public MapUsuario MapUsuario { get; set; }
+    public MapFutbolista(MapPosicion mapPosicion) : base(mapPosicion.AdoAGBD) {}
     public MapFutbolista(MapUsuario mapUsuario) : base(mapUsuario.AdoAGBD)
     {
         Tabla = "Futbolista";
@@ -24,6 +25,7 @@ public class MapFutbolista : Mapeador<Futbolista>
             remate: Convert.ToByte(fila["remate"]),
             pase: Convert.ToByte(fila["pase"]),
             defensa: Convert.ToByte(fila["defensa"]),
+            
             posicion: MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
         )
         {
