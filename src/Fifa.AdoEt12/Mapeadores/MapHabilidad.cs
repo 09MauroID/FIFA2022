@@ -17,11 +17,7 @@ public class MapHabilidad : Mapeador<Habilidad>
             idHabilidad: Convert.ToByte(fila["idHabilidad"]),
             nombre: fila["Nombre"].ToString(),
             descripcion: fila["Descripcion"].ToString()
-        )
-        {
-            Nombre = fila["Habilidad"].ToString(),
-            Descripcion = fila["Habilidad"].ToString(),
-        };
+        );
     public void AltaHabilidad(Habilidad habilidad)
         => EjecutarComandoCon("altaHablidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
 

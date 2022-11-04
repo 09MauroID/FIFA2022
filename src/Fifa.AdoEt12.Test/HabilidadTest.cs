@@ -15,6 +15,17 @@ public class HabilidadTest
     [Fact]
     public void AltaHabilidad()
     {
-        var habilidad = new Habilidad("");
+        var habilidad = new Habilidad(0, "Muralla", "Ultima defensa");
+        Ado.AltaHabilidad(habilidad);
+        Assert.Equal(5, habilidad.IdHabilidad);
+    }
+
+    [Fact]
+    public void TraerHabilidades()
+    {
+        var habilidad = Ado.MapHabilidad.FiltrarPorPK("idHabilidad", 4);
+        if (habilidad is null)
+            throw new ArgumentNullException("Habilidad es null");
+        Assert.True(habilidad.IdHabilidad == 4 && habilidad.Nombre == "Muralla");
     }
 }

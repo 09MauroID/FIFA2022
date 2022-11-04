@@ -39,8 +39,8 @@ public class MapTransferencia : Mapeador<Transferencia>
         Confirmacion = Convert.ToDateTime(fila["confirmacion"]),
         PrecioMonedas = Convert.ToInt32(fila["preciomonedas"])
     };
-    public void Publicar(Transferencia transferencia)
-        => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);
+    /*public void Publicar(Transferencia transferencia)
+        => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);*/
 
     public void ConfigurarPublicar(Transferencia transferencia)
     {
@@ -71,11 +71,11 @@ public class MapTransferencia : Mapeador<Transferencia>
             .AgregarParametro();
 
     }
-    public void PostPublicar(Transferencia transferencia)
+   /*public void PostPublicar(Transferencia transferencia)
     {
         var paramIdVendedor = GetParametro("unIdVendedor");
         transferencia.Vendedor = Convert.ToInt32(GetParametro(paramIdVendedor.Value));
-    }
+    }*/
     public Transferencia VendedorPorId(int id)
     {
         SetComandoSP("VendedorPorId");
@@ -88,6 +88,6 @@ public class MapTransferencia : Mapeador<Transferencia>
         return ElementoDesdeSP();
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
-    public List<Transferencia> ObtenerTransferencias(Usuario usuario);
+    //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
 }
 

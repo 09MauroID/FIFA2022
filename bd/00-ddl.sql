@@ -28,7 +28,7 @@ CONSTRAINT Pk_Posicion PRIMARY KEY (idPosicion)
 
 CREATE TABLE Futbolista(
 idFutbolista INT NOT NULL,
-idPosicion INT NOT NULL,
+idPosicion TINYINT UNSIGNED NOT NULL,
 Nombre VARCHAR (45) NOT NULL,
 Apellido VARCHAR (45) NOT NULL,
 Nacimiento DATE NOT NULL,
@@ -52,7 +52,7 @@ REFERENCES Futbolista (idFutbolista)
 );
 
 CREATE TABLE Skill(
-idHabilidad INT NOT NULL,
+idHabilidad TINYINT UNSIGNED NOT NULL,
 idFutbolista INT NOT NULL,
 PRIMARY KEY (idHabilidad, idFutbolista),
 CONSTRAINT FK_Skill_Habilidad FOREIGN KEY (idHabilidad)
