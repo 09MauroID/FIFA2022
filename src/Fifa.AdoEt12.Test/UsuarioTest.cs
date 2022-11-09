@@ -15,7 +15,8 @@ public class UsuarioTest
     [Fact]
     public void AltaUsuario()
     {
-        var usuario = new Usuarios(0, "Muralla", "Ultima defensa");
+        var usuario = new Usuario(5, "IsmaJoel25", 12345679, "Guemes", "Rosarino", 1000
+        );
         Ado.AltaUsuario(usuario);
         Assert.Equal(5, usuario.IdUsuario);
     }
@@ -23,9 +24,9 @@ public class UsuarioTest
     [Fact]
     public void TraerUsuarios()
     {
-        var usuario = Ado.MapUsuario.FiltrarPorPK("idUsuario", 4);
+        var usuario = Ado.MapUsuario.FiltrarPorPK("idUsuario", 5);
         if (usuario is null)
             throw new ArgumentNullException("Usuario es null");
-        Assert.True(usuario.IdUsuario == 4 && usuario.Nombre == "Muralla");
+        Assert.True(usuario.IdUsuario == 4 && usuario.Nombre == "IsmaJoel25");
     }
 }
