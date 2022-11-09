@@ -16,10 +16,10 @@ public class AdoFifa : IAdo
         MapPosicion = new MapPosicion(adoAGBD);
         MapUsuario = new MapUsuario(adoAGBD);
     }
-    public void AltaHabilidad(Habilidad habilidad)
+    public void AltaHabilidad(Futbolista habilidad)
         => MapHabilidad.AltaHabilidad(habilidad);
 
-    public List<Habilidad> ObtenerHabilidades()
+    public List<Futbolista> ObtenerHabilidades()
         => MapHabilidad.ColeccionDesdeTabla();
 
     public void AltaPosicion(Posicion posicion)

@@ -50,28 +50,20 @@ public class MapTransferencia : Mapeador<Transferencia>
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
 
-        BP.CrearParametro("unIdComprador")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
-            .AgregarParametro();
-
         BP.CrearParametro("unIdFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
 
-        BP.CrearParametro("Publicacion")
+        BP.CrearParametro("unaPublicacion")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
             .AgregarParametro();
 
-        BP.CrearParametro("Confirmacion")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
-            .AgregarParametro();
-
-        BP.CrearParametro("PrecioMonedas")
+        BP.CrearParametro("unPrecioMonedas")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
 
     }
-   /*public void PostPublicar(Transferencia transferencia)
+    /*public void PostPublicar(Transferencia transferencia)
     {
         var paramIdVendedor = GetParametro("unIdVendedor");
         transferencia.Vendedor = Convert.ToInt32(GetParametro(paramIdVendedor.Value));
@@ -87,7 +79,37 @@ public class MapTransferencia : Mapeador<Transferencia>
 
         return ElementoDesdeSP();
     }
+    public void ConfigurarComprar(Transferencia transferencia)
+    {
+        SetComandoSP("Comprar");
+        
+        BP.CrearParametro("unIdVendedor")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .AgregarParametro();
+
+        BP.CrearParametro("unIdComprador")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .AgregarParametro();
+
+        BP.CrearParametro("unIdFutbolista")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .AgregarParametro();
+
+        BP.CrearParametro("unaPublicacion")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
+            .AgregarParametro();
+    }
+    public Transferencia CompradorPorId(int id)
+    {
+        SetComandoSP("VendedorPorId");
+
+        BP.CrearParametro("unIdVendedor")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .SetValor(id)
+            .AgregarParametro();
+
+        return ElementoDesdeSP();
+    }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
     //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
 }
-

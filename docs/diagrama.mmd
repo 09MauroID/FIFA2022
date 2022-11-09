@@ -2,9 +2,11 @@ classDiagram
 direction LR
 Usuario *-- Propietario
 Usuario o-- Transferencia
+Usuario --> Futbolista
 Propietario *-- Futbolista
 Transferencia *-- Futbolista
 Futbolista *-- Skill
+Futbolista --> Habilidad
 Skill *-- Habilidad
 Futbolista *-- Posicion
 
@@ -15,6 +17,7 @@ Futbolista *-- Posicion
     Usuario: +Nombre string
     Usuario: +Apellido string
     Usuario: +Monedas uint
+    Usuario: +Futbolistas List~Futbolista~
 
     class Propietario
     Propietario: +idUsuario int
@@ -32,6 +35,7 @@ Futbolista *-- Posicion
     Futbolista: +Remate byte
     Futbolista: +Pase byte
     Futbolista: +Defensa byte
+    Futbolista: +Habilidades List~Habilidad~
 
     class Transferencia
     Transferencia: +idVendedor int

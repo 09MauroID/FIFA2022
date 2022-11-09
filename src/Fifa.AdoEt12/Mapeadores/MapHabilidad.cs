@@ -5,29 +5,29 @@ using System.Data;
 
 namespace Fifa.AdoEt12.Mapeadores;
 
-public class MapHabilidad : Mapeador<Habilidad>
+public class MapHabilidad : Mapeador<Futbolista>
 {
     public MapHabilidad(AdoAGBD ADO) : base(ADO)
     {
         Tabla = "Habilidad";
     }
-    public override Habilidad ObjetoDesdeFila(DataRow fila)
-        => new Habilidad
+    public override Futbolista ObjetoDesdeFila(DataRow fila)
+        => new Futbolista
         (
             idHabilidad: Convert.ToByte(fila["idHabilidad"]),
             nombre: fila["Nombre"].ToString(),
             descripcion: fila["Descripcion"].ToString()
         );
-    public void AltaHabilidad(Habilidad habilidad)
+    public void AltaHabilidad(Futbolista habilidad)
         => EjecutarComandoCon("altaHablidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
 
-    private void PostAltaHabilidad(Habilidad habilidad)
+    private void PostAltaHabilidad(Futbolista habilidad)
     {
         var paramIdHabilidad = GetParametro("unIdHabilidad");
         habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad);
     }
 
-    public void ConfigurarAltaHabilidad(Habilidad habilidad)
+    public void ConfigurarAltaHabilidad(Futbolista habilidad)
     {
         SetComandoSP("AltaHabilidad");
         BP.CrearParametroSalida("unidHabilidad")
@@ -42,13 +42,13 @@ public class MapHabilidad : Mapeador<Habilidad>
             .SetValor(habilidad.Descripcion)
             .AgregarParametro();
     }
-    public void PostAltahabilidad(Habilidad habilidad)
+    public void PostAltahabilidad(Futbolista habilidad)
     {
         var paramIdHabilidad = GetParametro("unIdHabilidad");
         habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad.Value);
     }
 
-    public Habilidad HabilidadPorIdHabilidad(byte idHabilidad)
+    public Futbolista HabilidadPorIdHabilidad(byte idHabilidad)
     {
         SetComandoSP("HabilidadPorIdHabilidad");
 
@@ -60,15 +60,15 @@ public class MapHabilidad : Mapeador<Habilidad>
         return ElementoDesdeSP();
     }
 
-    public List<Habilidad> ObtenerHabilidad() => ColeccionDesdeTabla();
+    public List<Futbolista> ObtenerHabilidad() => ColeccionDesdeTabla();
 
-    public List<Habilidad> HabilidadesDe(Futbolista futbolista)
+    public List<Futbolista> HabilidadesDe(Futbolista futbolista)
     {
         /* Paso 1; saber que futbolistas posee el usuario, esa informacion
         la tiene la Tabla Propietario, pero de todas sus filas, solo me
         interesa las de un determinado idUsuario  */
         var tablaSkill = FilasFiltradasRAW("idFutbolista", futbolista.IdFutbolista, "Skill");
-        var habilidades = new List<Habilidad>();
+        var habilidades = new List<Futbolista>();
 
         /*Paso 2: Recorrer las filas de la tabla devuelta, quedarme con el idFutbolista de cada fila
         devuelta y usarlo para FiltrarPorPK
