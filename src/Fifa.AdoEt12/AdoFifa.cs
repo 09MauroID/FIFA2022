@@ -7,10 +7,10 @@ public class AdoFifa : IAdo
 {
     public AdoAGBD AdoAGBD { get; set; }
     public MapHabilidad MapHabilidad { get; set; }
-    public MapPosicion MapPosicion { get; set;}
-    public MapUsuario MapUsuario {get; set;}
-    public MapFutbolista MapFutbolista {get; set;}
-    public MapTransferencia MapTransferencia {get; set;}
+    public MapPosicion MapPosicion { get; set; }
+    public MapUsuario MapUsuario { get; set; }
+    public MapFutbolista MapFutbolista { get; set; }
+    public MapTransferencia MapTransferencia { get; set; }
     public AdoFifa(AdoAGBD adoAGBD)
     {
         AdoAGBD = adoAGBD;
@@ -20,10 +20,10 @@ public class AdoFifa : IAdo
         MapFutbolista = new MapFutbolista(adoAGBD);
         MapTransferencia = new MapTransferencia(AdoAGBD);
     }
-    public void AltaHabilidad(Futbolista habilidad)
+    public void AltaHabilidad(Habilidad habilidad)
         => MapHabilidad.AltaHabilidad(habilidad);
 
-    public List<Futbolista> ObtenerHabilidades()
+    public List<Habilidad> ObtenerHabilidades()
         => MapHabilidad.ColeccionDesdeTabla();
 
     public void AltaPosicion(Posicion posicion)
@@ -31,7 +31,7 @@ public class AdoFifa : IAdo
 
     public List<Posicion> ObtenerPosiciones()
         => MapPosicion.ColeccionDesdeTabla();
-    
+
     public void AltaUsuario(Usuario usuario)
         => MapUsuario.AltaUsuario(usuario);
 
@@ -41,9 +41,9 @@ public class AdoFifa : IAdo
     public void AltaFutbolista(Futbolista futbolista)
         => MapUsuario.AltaFutbolista(futbolista);
 
-    public List<Usuario> obtenerFutbolistas()
+    public List<Futbolista> obtenerFutbolistas()
         => MapFutbolista.ColeccionDesdeTabla();
-    
-    
+
+
 
 }

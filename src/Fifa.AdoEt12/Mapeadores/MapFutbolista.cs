@@ -3,18 +3,18 @@ using et12.edu.ar.AGBD.Mapeadores;
 using System.Data;
 
 namespace Fifa.AdoEt12.Mapeadores;
-public class MapFutbolista : Mapeador<Futbolista>
+public class MapFutbolista : Mapeador<Habilidad>
 {
     public MapPosicion MapPosicion { get; set; }
     public MapUsuario MapUsuario { get; set; }
-    public MapFutbolista(MapPosicion mapPosicion) : base(mapPosicion.AdoAGBD) {}
+    public MapFutbolista(MapPosicion mapPosicion) : base(mapPosicion.AdoAGBD) { }
     public MapFutbolista(MapUsuario mapUsuario) : base(mapUsuario.AdoAGBD)
     {
         Tabla = "Futbolista";
         MapUsuario = mapUsuario;
     }
-    public override Futbolista ObjetoDesdeFila(DataRow fila)
-        => new Futbolista
+    public override Habilidad ObjetoDesdeFila(DataRow fila)
+        => new Habilidad
         (
             idUsuario: Convert.ToInt32(fila["idFutbolista"]),
             idFutbolista: Convert.ToInt32(fila["idFutbolista"]),
@@ -25,24 +25,13 @@ public class MapFutbolista : Mapeador<Futbolista>
             remate: Convert.ToByte(fila["remate"]),
             pase: Convert.ToByte(fila["pase"]),
             defensa: Convert.ToByte(fila["defensa"]),
-            
+
             posicion: MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
-        )
-        {
-            IdFutbolista = Convert.ToInt32(fila["idFutbolista"]),
-            Nombre = fila["nombre"].ToString(),
-            Apellido = fila["apellido"].ToString(),
-            Nacimiento = Convert.ToDateTime(fila["nacimiento"]),
-            Velocidad = Convert.ToByte(fila["velocidad"]),
-            Remate = Convert.ToByte(fila["remate"]),
-            Pase = Convert.ToByte(fila["pase"]),
-            Defensa = Convert.ToByte(fila["defensa"]),
-            Posicion = MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
-        };
-    public void AltaFutbolista(Futbolista futbolista)
+        );
+    public void AltaFutbolista(Habilidad futbolista)
         => EjecutarComandoCon("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
 
-    public void ConfigurarAltaFutbolista(Futbolista futbolista)
+    public void ConfigurarAltaFutbolista(Habilidad futbolista)
     {
         SetComandoSP("altaFutbolista");
 
@@ -79,12 +68,12 @@ public class MapFutbolista : Mapeador<Futbolista>
             .AgregarParametro();
 
     }
-    public void PostAltaFutbolista(Futbolista futbolista)
+    public void PostAltaFutbolista(Habilidad futbolista)
     {
         var paramIdFutbolista = GetParametro("unIdFutbolista");
         futbolista.IdFutbolista = Convert.ToInt32(paramIdFutbolista.Value);
     }
-    public Futbolista FutbolistaPorId(int id)
+    public Habilidad FutbolistaPorId(int id)
     {
         SetComandoSP("FutbolistaPorId");
 
@@ -95,14 +84,14 @@ public class MapFutbolista : Mapeador<Futbolista>
 
         return ElementoDesdeSP();
     }
-    public List<Futbolista> ObtenerFutbolistas() => ColeccionDesdeTabla();
-    public List<Futbolista> FutbolistasDe(Usuario usuario)
+    public List<Habilidad> ObtenerFutbolistas() => ColeccionDesdeTabla();
+    public List<Habilidad> FutbolistasDe(Usuario usuario)
     {
         /* Paso 1; saber que futbolistas posee el usuario, esa informacion
         la tiene la Tabla Propietario, pero de todas sus filas, solo me
         interesa las de un determinado idUsuario  */
         var tablaPropietario = FilasFiltradasRAW("idUsuario", usuario.IdUsuario, "Propietario");
-        var futbolistas = new List<Futbolista>();
+        var futbolistas = new List<Habilidad>();
 
         /*Paso 2: Recorrer las filas de la tabla devuelta, quedarme con el idFutbolista de cada fila
         devuelta y usarlo para FiltrarPorPK

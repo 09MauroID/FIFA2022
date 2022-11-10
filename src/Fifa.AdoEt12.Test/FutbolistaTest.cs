@@ -14,7 +14,7 @@ public class FutbolistaTest
     [Fact]
     public void AltaFutbolista()
     {
-        var Futbolista = new Futbolista(2, "Carlos", "Zantana", new DateTime(1996-04-09));
+        var futbolista = new Futbolista(2, 3, 4, "Carlos", "Zantana", new DateTime(1996-04-09), 70, 90, 60, 99);
         Ado.AltaFutbolista(futbolista);
         Assert.Equal(2, futbolista.IdFutbolista);
     }
@@ -22,7 +22,7 @@ public class FutbolistaTest
     [Fact]
     public void TraerFutbolistas()
     {
-        var futbolista = Ado.MapHabilidad.FiltrarPorPK("idFutbolista", 2);
+        var futbolista = Ado.MapFutbolista.FiltrarPorPK("idFutbolista", 2);
         if (futbolista is null)
             throw new ArgumentNullException("Futbolista es null");
         Assert.True(futbolista.IdFutbolista == 2 && futbolista.Nombre == "Carlos");

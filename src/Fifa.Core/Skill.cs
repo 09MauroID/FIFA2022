@@ -2,9 +2,9 @@ namespace Fifa.Core;
 
 public class Skill
 {
-    public Futbolista Habilidad { get; set; }
-    public Futbolista Futbolista { get; set; }
-    public Skill(Futbolista habilidad, Futbolista futbolista)
+    public Habilidad Habilidad { get; set; }
+    public Habilidad Futbolista { get; set; }
+    public Skill(Habilidad habilidad, Habilidad futbolista)
     {
         Habilidad = habilidad;
         Futbolista = futbolista;
