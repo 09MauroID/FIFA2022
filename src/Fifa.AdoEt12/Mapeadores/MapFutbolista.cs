@@ -3,7 +3,7 @@ using et12.edu.ar.AGBD.Mapeadores;
 using System.Data;
 
 namespace Fifa.AdoEt12.Mapeadores;
-public class MapFutbolista : Mapeador<Habilidad>
+public class MapFutbolista : Mapeador<Futbolista>
 {
     public MapPosicion MapPosicion { get; set; }
     public MapUsuario MapUsuario { get; set; }
@@ -13,10 +13,10 @@ public class MapFutbolista : Mapeador<Habilidad>
         Tabla = "Futbolista";
         MapUsuario = mapUsuario;
     }
-    public override Habilidad ObjetoDesdeFila(DataRow fila)
-        => new Habilidad
+    public override Futbolista ObjetoDesdeFila(DataRow fila)
+        => new Futbolista
         (
-            idUsuario: Convert.ToInt32(fila["idFutbolista"]),
+            idUsuario: Convert.ToInt32(fila["idUsuario"]),
             idFutbolista: Convert.ToInt32(fila["idFutbolista"]),
             nombre: fila["nombre"].ToString(),
             apellido: fila["apellido"].ToString(),
@@ -28,10 +28,10 @@ public class MapFutbolista : Mapeador<Habilidad>
 
             posicion: MapPosicion.FiltrarPorPK("idPosicion", fila["idPosicion"])
         );
-    public void AltaFutbolista(Habilidad futbolista)
+    public void AltaFutbolista(Futbolista futbolista)
         => EjecutarComandoCon("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
 
-    public void ConfigurarAltaFutbolista(Habilidad futbolista)
+    public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {
         SetComandoSP("altaFutbolista");
 
@@ -68,12 +68,12 @@ public class MapFutbolista : Mapeador<Habilidad>
             .AgregarParametro();
 
     }
-    public void PostAltaFutbolista(Habilidad futbolista)
+    public void PostAltaFutbolista(Futbolista futbolista)
     {
         var paramIdFutbolista = GetParametro("unIdFutbolista");
         futbolista.IdFutbolista = Convert.ToInt32(paramIdFutbolista.Value);
     }
-    public Habilidad FutbolistaPorId(int id)
+    public Futbolista FutbolistaPorId(int id)
     {
         SetComandoSP("FutbolistaPorId");
 
@@ -84,14 +84,14 @@ public class MapFutbolista : Mapeador<Habilidad>
 
         return ElementoDesdeSP();
     }
-    public List<Habilidad> ObtenerFutbolistas() => ColeccionDesdeTabla();
-    public List<Habilidad> FutbolistasDe(Usuario usuario)
+    public List<Futbolista> ObtenerFutbolistas() => ColeccionDesdeTabla();
+    public List<Futbolista> FutbolistasDe(Usuario usuario)
     {
         /* Paso 1; saber que futbolistas posee el usuario, esa informacion
         la tiene la Tabla Propietario, pero de todas sus filas, solo me
         interesa las de un determinado idUsuario  */
         var tablaPropietario = FilasFiltradasRAW("idUsuario", usuario.IdUsuario, "Propietario");
-        var futbolistas = new List<Habilidad>();
+        var futbolistas = new List<Futbolista>();
 
         /*Paso 2: Recorrer las filas de la tabla devuelta, quedarme con el idFutbolista de cada fila
         devuelta y usarlo para FiltrarPorPK

@@ -30,15 +30,8 @@ public class MapTransferencia : Mapeador<Transferencia>
         publicacion : Convert.ToDateTime(fila["publicacion"]),
         confirmacion : Convert.ToDateTime(fila["confirmacion"]),
         preciomonedas : Convert.ToInt32(fila["preciomonedas"])
-    )
-    {
-        Vendedor = MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idVendedor"])),
-        Comprador = MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idComprador"])),
-        Futbolista = MapFutbolista.FutbolistaPorId(Convert.ToInt32(fila["idFutbolista"])),
-        Publicacion = Convert.ToDateTime(fila["publicacion"]),
-        Confirmacion = Convert.ToDateTime(fila["confirmacion"]),
-        PrecioMonedas = Convert.ToInt32(fila["preciomonedas"])
-    };
+    );
+    
     /*public void Publicar(Transferencia transferencia)
         => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);*/
 
@@ -111,5 +104,10 @@ public class MapTransferencia : Mapeador<Transferencia>
         return ElementoDesdeSP();
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
+
+    internal void AltaTransferencia(Transferencia transferencia)
+    {
+        throw new NotImplementedException();
+    }
     //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
 }

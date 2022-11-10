@@ -17,4 +17,9 @@ public class Transferencia
         Confirmacion = confirmacion;
         PrecioMonedas = preciomonedas;
     }
+
+    public Transferencia(Usuario vendedor, Usuario comprador, Futbolista futbolista, DateTime publicacion, DateTime confirmacion, int preciomonedas)
+    {
+        PrecioMonedas = preciomonedas;
+    }
 }

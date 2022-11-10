@@ -1,4 +1,5 @@
 use Fifa;
+SELECT 'Creando Triggers' Estado;
 DELIMITER $$
 DROP TRIGGER IF EXISTS befInsFila $$
 CREATE TRIGGER befInsFila BEFORE INSERT ON Transferencia FOR EACH ROW

@@ -1,3 +1,5 @@
+SELECT 'Dump' Estado;
+
 CALL altaUsuario (@idLuciaMijal22, 'LuciaMijal22', 12345678, 'Mujica', 'Ceballos', 1000);
 CALL altaUsuario (@idIsmaJoel25, 'IsmaJoel25', 12345679, 'Guemes', 'Rosarino', 1000);
 CALL altaPosicion (3, 'Defensa');

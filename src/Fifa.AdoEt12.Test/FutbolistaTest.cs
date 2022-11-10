@@ -14,7 +14,8 @@ public class FutbolistaTest
     [Fact]
     public void AltaFutbolista()
     {
-        var futbolista = new Futbolista(2, 3, 4, "Carlos", "Zantana", new DateTime(1996-04-09), 70, 90, 60, 99);
+        var defensa = new Posicion(3, "Defensa");
+        var futbolista = new Futbolista(2, 3, defensa, "Carlos", "Zantana", new DateTime(1996, 4, 9), 70, 90, 60, 99);
         Ado.AltaFutbolista(futbolista);
         Assert.Equal(2, futbolista.IdFutbolista);
     }

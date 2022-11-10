@@ -1,5 +1,5 @@
 USE Fifa;
-
+SELECT 'Creando SPF' Estado;
 -- PUNTO 1
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPropietario $$
@@ -11,7 +11,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaPosicion $$
-CREATE PROCEDURE altaPosicion (unIdPosicion INT, unNombre VARCHAR(45))
+CREATE PROCEDURE altaPosicion (unIdPosicion TINYINT UNSIGNED, unNombre VARCHAR(45))
 BEGIN
     INSERT INTO Posicion (idPosicion, nombre)
         VALUES (unIdPosicion, unNombre);
@@ -19,7 +19,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaSkill $$
-CREATE PROCEDURE altaSkill (unIdHabilidad INT, unIdFutbolista INT)
+CREATE PROCEDURE altaSkill (unIdHabilidad TINYINT UNSIGNED, unIdFutbolista INT)
 BEGIN
     INSERT INTO Skill (idHabilidad, idFutbolista)
         VALUES (unIdHabilidad, unIdFutbolista);
@@ -36,7 +36,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaFutbolista $$
-CREATE PROCEDURE altaFutbolista (unIdFutbolista INT, unIdPosicion INT, unIdHabilidad INT, unNombre VARCHAR(45), unApellido VARCHAR(45), unNacimiento DATE, unaVelocidad TINYINT UNSIGNED, unRemate TINYINT UNSIGNED, unPase TINYINT UNSIGNED, unaDefensa TINYINT UNSIGNED)
+CREATE PROCEDURE altaFutbolista (unIdFutbolista INT, unIdPosicion TINYINT UNSIGNED, unIdHabilidad TINYINT UNSIGNED, unNombre VARCHAR(45), unApellido VARCHAR(45), unNacimiento DATE, unaVelocidad TINYINT UNSIGNED, unRemate TINYINT UNSIGNED, unPase TINYINT UNSIGNED, unaDefensa TINYINT UNSIGNED)
 BEGIN
 	INSERT INTO Futbolista (idFutbolista, idPosicion, idHabilidad, Nombre, Apellido, Nacimiento, Velocidad, Remate, Pase, Defensa)
 		VALUES (unIdFutbolista, unIdPosicion, unIdHabilidad, unNombre, unApellido, unNacimiento, unaVelocidad, unRemate, unPase,unaDefensa);
@@ -44,7 +44,7 @@ END $$
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS altaHabilidad $$
-CREATE PROCEDURE altaHabilidad (unIdHabilidad INT, unNombre VARCHAR(45), unaDescripcion VARCHAR(45))
+CREATE PROCEDURE altaHabilidad (unIdHabilidad TINYINT UNSIGNED, unNombre VARCHAR(45), unaDescripcion VARCHAR(45))
 BEGIN
 	INSERT INTO Habilidad (idHabilidad, Nombre, Descripcion)
 		VALUES (unIdHabilidad, unNombre, unaDescripcion);
@@ -69,7 +69,7 @@ BEGIN
 END $$
 
 DROP PROCEDURE IF EXISTS PosicionPorIdPosicion $$
-CREATE PROCEDURE PosicionPorIdPosicion(unIdPosicion INT)
+CREATE PROCEDURE PosicionPorIdPosicion(unIdPosicion TINYINT UNSIGNED)
 BEGIN
     SELECT *
     FROM Posicion
@@ -77,7 +77,7 @@ BEGIN
 END $$
 
 DROP PROCEDURE IF EXISTS HabilidadPorIdHabilidad $$
-CREATE PROCEDURE HabilidadPorIdHabilidad(unIdHabilidad INT)
+CREATE PROCEDURE HabilidadPorIdHabilidad(unIdHabilidad TINYINT UNSIGNED)
 BEGIN
     SELECT *
     FROM Habilidad

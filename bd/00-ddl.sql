@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS Fifa;
 CREATE DATABASE Fifa;
 USE Fifa;
 
+SELECT 'Creando BD' Estado;
+
 CREATE TABLE Usuario(
 idUsuario INT auto_increment,
 USER VARCHAR(15) NOT NULL,
