@@ -16,7 +16,7 @@ CREATE TRIGGER befInsCom BEFORE INSERT ON Transferencia FOR EACH ROW
 BEGIN
     IF (EXISTS (SELECT *
             FROM Usuario
-            WHERE idUsuario = NEW.idComprador
+            WHERE idUsuario = OLD.idComprador
             AND Monedas < PrecioMonedas)) THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Monedas insuficientes';

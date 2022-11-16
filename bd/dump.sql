@@ -65,20 +65,20 @@ CALL
         100,
         100
     );
+SELECT @Futbolista2;
+CALL altaPropietario (@idLuciaMijal22, @Futbolista1);
 
-CALL altaPropietario (@idLuciaMijal22, 2);
+CALL altaSkill (@Habilidad1, @Futbolista1);
 
-CALL altaSkill (@Futbolista1,@Habilidad1);
+CALL Publicar (@idLuciaMijal22, @Futbolista1, 100,'2022-05-26 10:56:36');
 
-CALL Publicar (1, @Futbolista1, 100,'2022-05-26 10:56:36');
+CALL Comprar (@idLuciaMijal22, @idIsmaJoel25, @Futbolista1, '2022-05-26 10:56:36');
 
-CALL Comprar (1, 5, 2, '2022-05-26 10:56:36');
-
-CALL TransferenciasActivas (2);
+CALL TransferenciasActivas (@Futbolista1);
 
 SELECT
     gananciasEntre (
-        2,
+        @Futbolista1,
         '2022-04-25 10:56:36',
         '2022-06-20 10:56:36',
         NOW()
@@ -86,4 +86,4 @@ SELECT
 
 -- Ejemplos para romper y probar triggers
 
-CALL Publicar (1, 3, 10000, '2022-08-04 14:52:23');
+CALL Publicar (@idLuciaMijal22, @Futbolista1, 10000, '2022-08-04 14:52:23');

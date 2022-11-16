@@ -57,7 +57,7 @@ DROP PROCEDURE
     IF EXISTS altaUsuario $$
 CREATE PROCEDURE
     altaUsuario (
-        out unIdUsuario INT,
+        OUT unIdUsuario INT,
         unUser VARCHAR(15),
         unaContrasena CHAR(64),
         unNombre VARCHAR(45),
@@ -92,7 +92,7 @@ DROP PROCEDURE
     IF EXISTS altaFutbolista $$
 CREATE PROCEDURE
     altaFutbolista (
-        unIdFutbolista INT,
+        OUT unIdFutbolista INT,
         unIdPosicion TINYINT UNSIGNED,
         unNombre VARCHAR(45),
         unApellido VARCHAR(45),
@@ -125,6 +125,7 @@ VALUES (
         unPase,
         unaDefensa
     );
+    set unIdFutbolista = LAST_INSERT_ID();
 
 END $$ 
 
@@ -134,7 +135,7 @@ DROP PROCEDURE
     IF EXISTS altaHabilidad $$
 CREATE PROCEDURE
     altaHabilidad (
-        unIdHabilidad TINYINT UNSIGNED,
+        OUT unIdHabilidad TINYINT UNSIGNED,
         unNombre VARCHAR(45),
         unaDescripcion VARCHAR(45)
     ) BEGIN
@@ -149,7 +150,7 @@ VALUES (
         unNombre,
         unaDescripcion
     );
-
+SET unIdHabilidad = LAST_INSERT_ID();
 END $$ # Nuevo SP Usuario
 DROP PROCEDURE
     IF EXISTS UsuarioPorIdUsuario $$
