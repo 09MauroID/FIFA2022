@@ -17,7 +17,7 @@ public class AdoFifa : IAdo
         MapHabilidad = new MapHabilidad(adoAGBD);
         MapPosicion = new MapPosicion(adoAGBD);
         MapUsuario = new MapUsuario(adoAGBD);
-        MapFutbolista = new MapFutbolista(adoAGBD);
+        MapFutbolista = new MapFutbolista(MapUsuario, MapPosicion);
         MapTransferencia = new MapTransferencia(adoAGBD);
     }
     public void AltaHabilidad(Habilidad habilidad)

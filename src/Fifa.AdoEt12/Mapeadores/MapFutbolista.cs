@@ -7,11 +7,12 @@ public class MapFutbolista : Mapeador<Futbolista>
 {
     public MapPosicion MapPosicion { get; set; }
     public MapUsuario MapUsuario { get; set; }
-    public MapFutbolista(MapPosicion mapPosicion) : base(mapPosicion.AdoAGBD) { }
-    public MapFutbolista(MapUsuario mapUsuario) : base(mapUsuario.AdoAGBD)
+    public MapFutbolista(MapUsuario mapUsuario, MapPosicion mapPosicion) : base(mapUsuario.AdoAGBD)
+
     {
         Tabla = "Futbolista";
         MapUsuario = mapUsuario;
+        MapPosicion = mapPosicion;
     }
     public override Futbolista ObjetoDesdeFila(DataRow fila)
         => new Futbolista
