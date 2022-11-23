@@ -23,9 +23,9 @@ public class HabilidadTest
     [Fact]
     public void TraerHabilidades()
     {
-        var habilidad = Ado.MapHabilidad.FiltrarPorPK("idHabilidad", 4);
+        var habilidad = Ado.MapHabilidad.FiltrarPorPK("idHabilidad", 1);
         if (habilidad is null)
             throw new ArgumentNullException("Habilidad es null");
-        Assert.True(habilidad.IdHabilidad == 4 && habilidad.Nombre == "Muralla");
+        Assert.True(habilidad.IdHabilidad == 1 && habilidad.Nombre == "Muralla");
     }
 }
