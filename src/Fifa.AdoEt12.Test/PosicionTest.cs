@@ -15,9 +15,9 @@ public class PosicionTest
     [Fact]
     public void AltaPosicion()
     {
-        var posicion = new Posicion(1, "Defensa");
+        var posicion = new Posicion(4, "Arquero");
         Ado.AltaPosicion(posicion);
-        Assert.Equal(3, posicion.IdPosicion);
+        Assert.Equal(4, posicion.IdPosicion);
     }
 
     [Fact]

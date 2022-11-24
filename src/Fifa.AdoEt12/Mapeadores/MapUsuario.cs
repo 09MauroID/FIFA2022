@@ -53,7 +53,7 @@ namespace Fifa.AdoEt12.Mapeadores
             .SetTipoVarchar(45)
             .AgregarParametro();
 
-            BP.CrearParametro("unaMoneda")
+            BP.CrearParametro("unaMonedas")
             .SetValor(usuario.Monedas)
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
