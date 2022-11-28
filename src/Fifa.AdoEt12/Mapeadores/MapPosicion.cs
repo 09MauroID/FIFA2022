@@ -14,12 +14,8 @@ public class MapPosicion : Mapeador<Posicion>
         => new Posicion
         (
             idPosicion: Convert.ToByte(fila["idPosicion"]),
-            nombre: fila["nombre"].ToString()
-        )
-        {
-
-            Nombre = fila["posicion"].ToString()
-        };
+            nombre: fila["nombre"].ToString()!
+        );
     public void AltaPosicion(Posicion posicion)
         => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
     public void ConfigurarAltaPosicion(Posicion posicion)

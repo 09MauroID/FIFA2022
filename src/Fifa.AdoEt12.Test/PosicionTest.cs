@@ -23,9 +23,9 @@ public class PosicionTest
     [Fact]
     public void TraerPosiciones()
     {
-        var posicion = Ado.MapPosicion.FiltrarPorPK("idPosicion", 3);
+        var posicion = Ado.MapPosicion.FiltrarPorPK("idPosicion", 1);
         if (posicion is null)
             throw new ArgumentNullException("Posicion es null");
-        Assert.True(posicion.IdPosicion == 3 && posicion.Nombre == "Defensa");
+        Assert.True(posicion.IdPosicion == 1 && posicion.Nombre == "Defensa");
     }
 }

@@ -290,18 +290,19 @@ CREATE FUNCTION
     gananciasEntre (
         unIdFutbolista INT,
         Inicio DATETIME,
-        Fin DATETIME,
-        Confirmacion DATETIME
-    ) RETURNS MEDIUMINT UNSIGNED READS SQL DATA BEGIN DECLARE sumatoria MEDIUMINT UNSIGNED;
+        Fin DATETIME
+    ) RETURNS MEDIUMINT UNSIGNED READS SQL DATA
+BEGIN
+    DECLARE sumatoria MEDIUMINT UNSIGNED;
 
-SELECT
-    SUM(PrecioMonedas) INTO sumatoria
-FROM Transferencia
-WHERE
-    idFutbolista = unIdFutbolista
-    AND Confirmacion BETWEEN Inicio AND Fin;
+    SELECT
+        SUM(PrecioMonedas) INTO sumatoria
+    FROM Transferencia
+    WHERE
+        idFutbolista = unIdFutbolista
+        AND Confirmacion BETWEEN Inicio AND Fin;
 
-RETURN sumatoria;
+    RETURN sumatoria;
 
 END $$ 
 
