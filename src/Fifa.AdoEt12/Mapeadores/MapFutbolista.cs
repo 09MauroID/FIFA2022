@@ -36,36 +36,52 @@ public class MapFutbolista : Mapeador<Futbolista>
     {
         SetComandoSP("altaFutbolista");
 
-        BP.CrearParametro("unIdFutbolista")
+        BP.CrearParametro("unIdUsuario")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .AgregarParametro();
+
+        BP.CrearParametroSalida("unIdFutbolista")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .AgregarParametro();
+
+        BP.CrearParametro("unIdPosicion")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .SetValor(futbolista.Posicion.IdPosicion)
             .AgregarParametro();
 
         BP.CrearParametro("unNombre")
             .SetTipoVarchar(45)
+            .SetValor(futbolista.Nombre)
             .AgregarParametro();
 
         BP.CrearParametro("unApellido")
             .SetTipoVarchar(45)
+            .SetValor(futbolista.Apellido)
             .AgregarParametro();
 
         BP.CrearParametro("unNacimiento")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Date)
+            .SetValor(futbolista.Nacimiento)
             .AgregarParametro();
 
-        BP.CrearParametro("unVelocidad")
+        BP.CrearParametro("unaVelocidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(futbolista.Velocidad)
             .AgregarParametro();
 
         BP.CrearParametro("unRemate")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(futbolista.Remate)
             .AgregarParametro();
 
         BP.CrearParametro("unPase")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(futbolista.Pase)
             .AgregarParametro();
 
-        BP.CrearParametro("unDefensa")
+        BP.CrearParametro("unaDefensa")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetValor(futbolista.Defensa)
             .AgregarParametro();
 
     }

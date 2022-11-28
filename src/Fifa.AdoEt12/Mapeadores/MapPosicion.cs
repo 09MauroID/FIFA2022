@@ -26,7 +26,7 @@ public class MapPosicion : Mapeador<Posicion>
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UByte)
             .AgregarParametro();
 
-        BP.CrearParametro("unPosicion")
+        BP.CrearParametro("unNombre")
             .SetTipoVarchar(45)
             .SetValor(posicion.Nombre)
             .AgregarParametro();
