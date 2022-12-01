@@ -24,16 +24,15 @@ public class MapTransferencia : Mapeador<Transferencia>
     public override Transferencia ObjetoDesdeFila(DataRow fila)
     => new Transferencia
     (
-        vendedor : MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idVendedor"])),
-        comprador : MapUsuario.UsuarioPorIdUsuario(Convert.ToInt32(fila["idComprador"])),
-        futbolista : MapFutbolista.FutbolistaPorId(Convert.ToInt32(fila["idFutbolista"])),
+        vendedor : (Convert.ToInt32(fila["idVendedor"])),
+        comprador : (Convert.ToInt32(fila["idComprador"])),
         publicacion : Convert.ToDateTime(fila["publicacion"]),
         confirmacion : Convert.ToDateTime(fila["confirmacion"]),
         preciomonedas : Convert.ToInt32(fila["preciomonedas"])
     );
     
-    /*public void Publicar(Transferencia transferencia)
-        => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);*/
+    public void Publicar(Transferencia transferencia)
+        => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);
 
     public void ConfigurarPublicar(Transferencia transferencia)
     {
@@ -56,11 +55,11 @@ public class MapTransferencia : Mapeador<Transferencia>
             .AgregarParametro();
 
     }
-    /*public void PostPublicar(Transferencia transferencia)
+    public void PostPublicar(Transferencia transferencia)
     {
         var paramIdVendedor = GetParametro("unIdVendedor");
-        transferencia.Vendedor = Convert.ToInt32(GetParametro(paramIdVendedor.Value));
-    }*/
+        transferencia.Vendedor = Convert.ToInt32(paramIdVendedor.Value);
+    }
     public Transferencia VendedorPorId(int id)
     {
         SetComandoSP("VendedorPorId");
@@ -102,6 +101,12 @@ public class MapTransferencia : Mapeador<Transferencia>
             .AgregarParametro();
 
         return ElementoDesdeSP();
+    }
+    public void TransferenciasActivas(Transferencia transferencia)
+        => EjecutarComandoCon("TransferenciasActivas", ConfigurarTransferenciasActivas, PostTransferenciasActivas, transferencia);
+    publi
+    {
+    
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
 

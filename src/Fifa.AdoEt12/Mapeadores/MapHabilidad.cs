@@ -24,14 +24,14 @@ public class MapHabilidad : Mapeador<Habilidad>
     private void PostAltaHabilidad(Habilidad habilidad)
     {
         var paramIdHabilidad = GetParametro("unIdHabilidad");
-        habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad);
+        habilidad.IdHabilidad = Convert.ToByte(paramIdHabilidad.Value);
     }
 
     public void ConfigurarAltaHabilidad(Habilidad habilidad)
     {
         SetComandoSP("AltaHabilidad");
         BP.CrearParametroSalida("unidHabilidad")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.UByte)
             .AgregarParametro();
         BP.CrearParametro("unNombre")
             .SetTipoVarchar(45)
@@ -75,7 +75,7 @@ public class MapHabilidad : Mapeador<Habilidad>
         */
         for (int i = 0; i < tablaSkill.Rows.Count; i++)
         {
-            var idHabilidad = Convert.ToInt32(tablaSkill.Rows[i]["idHabilidad"]);
+            var idHabilidad = Convert.ToByte(tablaSkill.Rows[i]["idHabilidad"]);
             habilidades.Add(FiltrarPorPK("idHabilidad", idHabilidad)!);
         }
 

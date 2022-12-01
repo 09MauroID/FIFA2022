@@ -17,7 +17,6 @@ public class MapFutbolista : Mapeador<Futbolista>
     public override Futbolista ObjetoDesdeFila(DataRow fila)
         => new Futbolista
         (
-            idUsuario: Convert.ToInt32(fila["idUsuario"]),
             idFutbolista: Convert.ToInt32(fila["idFutbolista"]),
             nombre: fila["nombre"].ToString(),
             apellido: fila["apellido"].ToString(),
@@ -35,10 +34,6 @@ public class MapFutbolista : Mapeador<Futbolista>
     public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {
         SetComandoSP("altaFutbolista");
-
-        BP.CrearParametro("unIdUsuario")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
-            .AgregarParametro();
 
         BP.CrearParametroSalida("unIdFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
