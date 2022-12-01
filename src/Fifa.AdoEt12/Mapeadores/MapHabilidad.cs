@@ -33,11 +33,11 @@ public class MapHabilidad : Mapeador<Habilidad>
         BP.CrearParametroSalida("unidHabilidad")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Byte)
             .AgregarParametro();
-        BP.CrearParametro("unHabilidad")
+        BP.CrearParametro("unNombre")
             .SetTipoVarchar(45)
             .SetValor(habilidad.Nombre)
             .AgregarParametro();
-        BP.CrearParametro("unHabiliad")
+        BP.CrearParametro("unaDescripcion")
             .SetTipoVarchar(45)
             .SetValor(habilidad.Descripcion)
             .AgregarParametro();

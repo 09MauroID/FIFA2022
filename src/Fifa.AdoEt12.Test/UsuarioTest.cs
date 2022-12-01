@@ -15,9 +15,9 @@ public class UsuarioTest
     [Fact]
     public void AltaUsuario()
     {
-        var usuario = new Usuario(7, "Serafina", "0234567", "Soledaad", "Sola", 1000);
+        var usuario = new Usuario(0, "Serafina", "0234567", "Soledaad", "Sola", 1000);
         Ado.AltaUsuario(usuario);
-        Assert.Equal(7, usuario.IdUsuario);
+        Assert.Equal(3, usuario.IdUsuario);
     }
 
     [Fact]
