@@ -17,7 +17,7 @@ public class FutbolistaTest
         var defensa = Ado.MapPosicion.FiltrarPorPK("idposicion", 1);
         if (defensa is null)
             throw new Exception("No hay defensas");
-        var futbolista = new Futbolista(idUsuario: 2, idFutbolista: 0, posicion: defensa, nombre: "Carlos", apellido: "Zantana", nacimiento: new DateTime(1996, 4, 9), velocidad: 70, remate: 90, pase: 60, defensa: 99);
+        var futbolista = new Futbolista(idUsuario: 1, idFutbolista: 0, posicion: defensa, nombre: "Kun", apellido: "Aguero", nacimiento: new DateTime(1998, 4, 9), velocidad: 70, remate: 90, pase: 60, defensa: 99);
         Ado.AltaFutbolista(futbolista);
         Assert.Equal(3, futbolista.IdFutbolista);
     }
@@ -28,6 +28,6 @@ public class FutbolistaTest
         var futbolista = Ado.MapFutbolista.FiltrarPorPK("idFutbolista", 2);
         if (futbolista is null)
             throw new ArgumentNullException("Futbolista es null");
-        Assert.True(futbolista.IdFutbolista == 2 && futbolista.Nombre == "Carlos");
+        Assert.True(futbolista.IdFutbolista == 2 && futbolista.Nombre == "Leo");
     }
 }

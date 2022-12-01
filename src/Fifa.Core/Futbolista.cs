@@ -2,6 +2,7 @@ namespace Fifa.Core;
 
 public class Futbolista
 {
+    public int IdUsuario { get; set; }
     public int IdFutbolista { get; set; }
     public Posicion Posicion { get; set; }
     public string Nombre { get; set; }
@@ -11,7 +12,7 @@ public class Futbolista
     public byte Remate { get; set; }
     public byte Pase { get; set; }
     public byte Defensa { get; set; }
-    public Futbolista(int idFutbolista, Posicion posicion, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
+    public Futbolista(int idUsuario, int idFutbolista, Posicion posicion, string nombre, string apellido, DateTime nacimiento, byte velocidad, byte remate, byte pase, byte defensa)
     {
         IdFutbolista = idFutbolista;
         Nombre = nombre;
@@ -21,6 +22,7 @@ public class Futbolista
         Remate = remate;
         Pase = pase;
         Defensa = defensa;
+        IdUsuario = idUsuario;
         Posicion = posicion;
     }
 }

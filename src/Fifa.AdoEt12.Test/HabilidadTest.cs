@@ -15,9 +15,9 @@ public class HabilidadTest
     [Fact]
     public void AltaHabilidad()
     {
-        var habilidad = new Habilidad(0, "Muralla", "Ultima defensa");
+        var habilidad = new Habilidad(0, "Corredor", "Lateral Izquierdo");
         Ado.AltaHabilidad(habilidad);
-        Assert.Equal(5, habilidad.IdHabilidad);
+        Assert.Equal(2, habilidad.IdHabilidad);
     }
 
     [Fact]
