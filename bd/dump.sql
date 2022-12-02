@@ -80,14 +80,6 @@ CALL
         '2022-05-26 10:56:36'
     );
 
-CALL
-    Comprar (
-        @idLuciaMijal22,
-        @idIsmaJoel25,
-        @Futbolista1,
-        '2022-05-26 10:56:36'
-    );
-
 CALL TransferenciasActivas (@Futbolista1);
 
 SELECT

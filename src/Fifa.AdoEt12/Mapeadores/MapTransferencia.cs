@@ -12,6 +12,7 @@ public class MapTransferencia : Mapeador<Transferencia>
     public MapTransferencia(AdoAGBD ado) : base(ado)
     {
         Tabla = "Transferencia";
+        MapFutbolista = MapFutbolista;
     }
     public MapTransferencia(MapUsuario mapUsuario) : this(mapUsuario.AdoAGBD)
     {
@@ -24,13 +25,15 @@ public class MapTransferencia : Mapeador<Transferencia>
     public override Transferencia ObjetoDesdeFila(DataRow fila)
     => new Transferencia
     (
-        vendedor : (Convert.ToInt32(fila["idVendedor"])),
-        comprador : (Convert.ToInt32(fila["idComprador"])),
-        publicacion : Convert.ToDateTime(fila["publicacion"]),
-        confirmacion : Convert.ToDateTime(fila["confirmacion"]),
-        preciomonedas : Convert.ToInt32(fila["preciomonedas"])
+        vendedor: (Convert.ToInt32(fila["idVendedor"])),
+        comprador: (Convert.ToInt32(fila["idComprador"])),
+        futbolista: (Convert.ToInt32(fila["idFutbolista"])),
+        publicacion: Convert.ToDateTime(fila["publicacion"]),
+        confirmacion: Convert.ToDateTime(fila["confirmacion"]),
+        preciomonedas: Convert.ToInt32(fila["preciomonedas"])
+
     );
-    
+
     public void Publicar(Transferencia transferencia)
         => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);
 
@@ -74,7 +77,7 @@ public class MapTransferencia : Mapeador<Transferencia>
     public void ConfigurarComprar(Transferencia transferencia)
     {
         SetComandoSP("Comprar");
-        
+
         BP.CrearParametro("unIdVendedor")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
@@ -104,9 +107,28 @@ public class MapTransferencia : Mapeador<Transferencia>
     }
     public void TransferenciasActivas(Transferencia transferencia)
         => EjecutarComandoCon("TransferenciasActivas", ConfigurarTransferenciasActivas, PostTransferenciasActivas, transferencia);
-    publi
+
+    private void PostTransferenciasActivas(Transferencia obj)
     {
-    
+        throw new NotImplementedException();
+    }
+
+    public void ConfigurarTransferenciasActivas(Transferencia transferencia)
+    {
+        SetComandoSP("TrasferenciasActivas");
+        BP.CrearParametroSalida("unIdFutbolista")
+          .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+          .AgregarParametro();
+
+        BP.CrearParametro("unConfirmacion")
+              .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
+              .SetValor(transferencia.Confirmacion)
+              .AgregarParametro();
+    }
+    public void PostTransferenciasActivas(Futbolista futbolista)
+    {
+        var paramIdFutbolista = GetParametro("unIdFutbolista");
+        futbolista.IdFutbolista = Convert.ToInt32(paramIdFutbolista.Value);
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
 

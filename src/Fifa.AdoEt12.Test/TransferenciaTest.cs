@@ -3,21 +3,30 @@ using Fifa.Core;
 
 namespace Fifa.AdoEt12.Test;
 
-    public class TransferenciaTest
+public class TransferenciaTest
+{
+
+    public AdoFifa Ado { get; set; }
+    public TransferenciaTest()
     {
-        public AdoFifa Ado { get; set; }
-        public TransferenciaTest()
-        {
         var adoAGBD = FactoryAdoAGBD.GetAdoMySQL("appSettings.json", "test");
         Ado = new AdoFifa(adoAGBD);
-        }
-        [Fact]
-        public void ObtenerTransferencias()
-        {
-            var transferencia = Ado.MapTransferencia.FiltrarPorPK("idVendedor",1);
-            if (transferencia is null)
-                throw new ArgumentNullException ("Trasferencia no existe");
-            Assert.True(transferencia.Vendedor == 1 && transferencia.Comprador == 2);
-        }
-        
     }
+    [Fact]
+    public void ObtenerTransferencias()
+    {
+        var transferencia = Ado.MapTransferencia.FiltrarPorPK("idVendedor", 1);
+        if (transferencia is null)
+            throw new ArgumentNullException("Trasferencia no existe");
+        Assert.True(transferencia.Vendedor == 1 && transferencia.Comprador == 2);
+    }
+    [Fact]
+    public void TransferenciasActivas()
+    {
+        var trasferenciaActiva = Ado.MapTransferencia.FiltrarPorPK("Futbolista", 1);
+        if (confirmacion is null)
+            throw new ArgumentNullException("Futbolista no esta en venta");
+        Assert.True(trasferenciaActiva.Confirmacion == null && trasferenciaActiva.Futbolista == 1);
+    }
+
+}
