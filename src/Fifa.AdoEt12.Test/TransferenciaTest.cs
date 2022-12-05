@@ -26,7 +26,6 @@ public class TransferenciaTest
         var transferencia = Ado.MapTransferencia.FiltrarPorPK("idFutbolista", 1);
         if (transferencia is null)
             throw new ArgumentNullException("Futbolista no esta en venta");
-        Assert.True(transferencia.Confirmacion is null && transferencia.Futbolista.IdFutbolista == 1);
+        Assert.True(transferencia.Confirmacion is null);
     }
-
 }

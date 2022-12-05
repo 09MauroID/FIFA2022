@@ -2,37 +2,35 @@ using Fifa.Core;
 using et12.edu.ar.AGBD.Mapeadores;
 using System.Data;
 using et12.edu.ar.AGBD.Ado;
+using static System.Convert;
 
 namespace Fifa.AdoEt12.Mapeadores;
 
 public class MapTransferencia : Mapeador<Transferencia>
 {
     public MapUsuario MapUsuario { get; set; }
-    public MapFutbolista MapFutbolista { get; set; }
-    public MapTransferencia(AdoAGBD ado) : base(ado)
+    public MapFutbolista MapFutbolista{ get; set; }
+    public MapTransferencia(MapUsuario mapUsuario,  MapFutbolista mapFutbolista) : base(mapUsuario.AdoAGBD)
     {
         Tabla = "Transferencia";
-        MapFutbolista = MapFutbolista;
-    }
-    public MapTransferencia(MapUsuario mapUsuario) : this(mapUsuario.AdoAGBD)
-    {
         MapUsuario = mapUsuario;
-    }
-    public MapTransferencia(MapFutbolista mapFutbolista) : this(mapFutbolista.AdoAGBD)
-    {
         MapFutbolista = mapFutbolista;
     }
     public override Transferencia ObjetoDesdeFila(DataRow fila)
     => new Transferencia
     (
-        vendedor: (Convert.ToInt32(fila["idVendedor"])),
-        comprador: (Convert.ToInt32(fila["idComprador"])),
-        futbolista: (Convert.ToInt32(fila["idFutbolista"])),
-        publicacion: Convert.ToDateTime(fila["publicacion"]),
-        confirmacion: Convert.ToDateTime(fila["confirmacion"]),
-        preciomonedas: Convert.ToInt32(fila["preciomonedas"])
-
+        vendedor: ToInt32(fila["idVendedor"]),
+        comprador: CompradorNuLL(fila["idComprador"]),
+        futbolista: ToInt32(fila["idFutbolista"]),
+        publicacion: ToDateTime(fila["publicacion"]),
+        confirmacion: FechaONull(fila["confirmacion"]),
+        preciomonedas: ToInt32(fila["preciomonedas"])
     );
+
+    private DateTime? FechaONull(object celda)
+        => IsDBNull(celda) ? null : ToDateTime(celda);
+    private Usuario? CompradorNuLL(object celda)
+        => IsDBNull(celda) ? null : MapUsuario.FiltrarPorPK("idUsuario", (celda));
 
     public void Publicar(Transferencia transferencia)
         => EjecutarComandoCon("publicar", ConfigurarPublicar, transferencia);
@@ -108,13 +106,13 @@ public class MapTransferencia : Mapeador<Transferencia>
         SetComandoSP("TransferenciasActivas");
         
         BP.CrearParametroSalida("unIdFutbolista")
-          .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
-          .AgregarParametro();
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .AgregarParametro();
 
         BP.CrearParametro("unConfirmacion")
-              .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
-              .SetValor(transferencia.Confirmacion)
-              .AgregarParametro();
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
+            .SetValor(transferencia.Confirmacion)
+            .AgregarParametro();
     }
     public void PostTransferenciasActivas(Transferencia transferencia)
     {

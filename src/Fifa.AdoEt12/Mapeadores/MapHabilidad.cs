@@ -8,6 +8,7 @@ namespace Fifa.AdoEt12.Mapeadores;
 public class MapHabilidad : Mapeador<Habilidad>
 {
     public MapHabilidad(AdoAGBD ADO) : base(ADO)
+    
     {
         Tabla = "Habilidad";
     }

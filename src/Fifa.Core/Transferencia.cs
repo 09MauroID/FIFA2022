@@ -7,12 +7,12 @@ public class Transferencia
     private int futbolista;
 
     public Usuario Vendedor { get; set; }
-    public Usuario Comprador { get; set; }
+    public Usuario? Comprador { get; set; }
     public Futbolista Futbolista { get; set; }
     public DateTime Publicacion { get; set; }
     public DateTime? Confirmacion { get; set; }
     public int PrecioMonedas { get; set; }
-    public Transferencia(Usuario vendedor, Usuario comprador, Futbolista futbolista, DateTime publicacion, DateTime confirmacion, int preciomonedas)
+    public Transferencia( Usuario vendedor, Usuario? comprador, Futbolista futbolista, DateTime publicacion, DateTime? confirmacion, int preciomonedas)
     {
         Vendedor = vendedor;
         Comprador = comprador;
@@ -22,10 +22,10 @@ public class Transferencia
         PrecioMonedas = preciomonedas;
     }
 
-    public Transferencia(int vendedor, int comprador, int futbolista, DateTime publicacion, DateTime confirmacion, int preciomonedas)
+    public Transferencia(int vendedor, Usuario? comprador, int futbolista, DateTime publicacion, DateTime? confirmacion, int preciomonedas)
     {
         this.vendedor = vendedor;
-        this.comprador = comprador;
+        comprador = comprador;
         this.futbolista = futbolista;
         Publicacion = publicacion;
         Confirmacion = confirmacion;
