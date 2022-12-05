@@ -47,7 +47,7 @@ public class AdoFifa : IAdo
     public void AltaTransferencia(Transferencia transferencia)
         => MapTransferencia.AltaTransferencia(transferencia);
 
-    public List<Transferencia> obtenerTransferencias()
+    public List<Transferencia> TransferenciasActivas()
         => MapTransferencia.ColeccionDesdeTabla();
 
 }

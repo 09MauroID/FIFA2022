@@ -35,7 +35,7 @@ public class MapTransferencia : Mapeador<Transferencia>
     );
 
     public void Publicar(Transferencia transferencia)
-        => EjecutarComandoCon("publicar", ConfigurarPublicar, PostPublicar, transferencia);
+        => EjecutarComandoCon("publicar", ConfigurarPublicar, transferencia);
 
     public void ConfigurarPublicar(Transferencia transferencia)
     {
@@ -57,11 +57,6 @@ public class MapTransferencia : Mapeador<Transferencia>
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
             .AgregarParametro();
 
-    }
-    public void PostPublicar(Transferencia transferencia)
-    {
-        var paramIdVendedor = GetParametro("unIdVendedor");
-        transferencia.Vendedor = Convert.ToInt32(paramIdVendedor.Value);
     }
     public Transferencia VendedorPorId(int id)
     {
@@ -108,14 +103,10 @@ public class MapTransferencia : Mapeador<Transferencia>
     public void TransferenciasActivas(Transferencia transferencia)
         => EjecutarComandoCon("TransferenciasActivas", ConfigurarTransferenciasActivas, PostTransferenciasActivas, transferencia);
 
-    private void PostTransferenciasActivas(Transferencia obj)
-    {
-        throw new NotImplementedException();
-    }
-
     public void ConfigurarTransferenciasActivas(Transferencia transferencia)
     {
-        SetComandoSP("TrasferenciasActivas");
+        SetComandoSP("TransferenciasActivas");
+        
         BP.CrearParametroSalida("unIdFutbolista")
           .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
           .AgregarParametro();
@@ -125,10 +116,21 @@ public class MapTransferencia : Mapeador<Transferencia>
               .SetValor(transferencia.Confirmacion)
               .AgregarParametro();
     }
-    public void PostTransferenciasActivas(Futbolista futbolista)
+    public void PostTransferenciasActivas(Transferencia transferencia)
     {
-        var paramIdFutbolista = GetParametro("unIdFutbolista");
-        futbolista.IdFutbolista = Convert.ToInt32(paramIdFutbolista.Value);
+        var paramConfirmacion  = GetParametro("unaConfirmacion");
+        transferencia.Confirmacion = Convert.ToDateTime(paramConfirmacion.Value);
+    }
+        public Transferencia FutbolistaPorid(int Id)
+    {
+        SetComandoSP("FutbolistaPorId");
+        
+        BP.CrearParametro("unIdFutbolista")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .SetValor(Id)
+            .AgregarParametro();
+
+        return ElementoDesdeSP();
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
 
@@ -136,5 +138,6 @@ public class MapTransferencia : Mapeador<Transferencia>
     {
         throw new NotImplementedException();
     }
+
     //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
 }
