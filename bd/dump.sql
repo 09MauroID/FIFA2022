@@ -91,10 +91,10 @@ SELECT
 
 -- Ejemplos para romper y probar triggers
 
-CALL
-    Publicar (
-        @idLuciaMijal22,
-        @Futbolista1,
-        10000,
-        '2022-08-04 14:52:23'
-    );
+--CALL
+--    Publicar (
+--        @idLuciaMijal22,
+--        @Futbolista1,
+ --       10000,
+--        '2022-08-04 14:52:23'
+--    );

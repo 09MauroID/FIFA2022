@@ -9,8 +9,8 @@ namespace Fifa.AdoEt12.Mapeadores;
 public class MapTransferencia : Mapeador<Transferencia>
 {
     public MapUsuario MapUsuario { get; set; }
-    public MapFutbolista MapFutbolista{ get; set; }
-    public MapTransferencia(MapUsuario mapUsuario,  MapFutbolista mapFutbolista) : base(mapUsuario.AdoAGBD)
+    public MapFutbolista MapFutbolista { get; set; }
+    public MapTransferencia(MapUsuario mapUsuario, MapFutbolista mapFutbolista) : base(mapUsuario.AdoAGBD)
     {
         Tabla = "Transferencia";
         MapUsuario = mapUsuario;
@@ -48,6 +48,10 @@ public class MapTransferencia : Mapeador<Transferencia>
             .AgregarParametro();
 
         BP.CrearParametro("unaPublicacion")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
+            .AgregarParametro();
+
+        BP.CrearParametro("unConfirmacion")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
             .AgregarParametro();
 
@@ -99,43 +103,22 @@ public class MapTransferencia : Mapeador<Transferencia>
         return ElementoDesdeSP();
     }
     public void TransferenciasActivas(Transferencia transferencia)
-        => EjecutarComandoCon("TransferenciasActivas", ConfigurarTransferenciasActivas, PostTransferenciasActivas, transferencia);
+        => EjecutarComandoCon("TransferenciasActivas", ConfigurarTransferenciasActivas, transferencia);
 
     public void ConfigurarTransferenciasActivas(Transferencia transferencia)
     {
         SetComandoSP("TransferenciasActivas");
-        
-        BP.CrearParametroSalida("unIdFutbolista")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
-            .AgregarParametro();
 
-        BP.CrearParametro("unConfirmacion")
-            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.DateTime)
-            .SetValor(transferencia.Confirmacion)
-            .AgregarParametro();
-    }
-    public void PostTransferenciasActivas(Transferencia transferencia)
-    {
-        var paramConfirmacion  = GetParametro("unaConfirmacion");
-        transferencia.Confirmacion = Convert.ToDateTime(paramConfirmacion.Value);
-    }
-        public Transferencia FutbolistaPorid(int Id)
-    {
-        SetComandoSP("FutbolistaPorId");
-        
         BP.CrearParametro("unIdFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
-            .SetValor(Id)
             .AgregarParametro();
-
-        return ElementoDesdeSP();
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
-
     internal void AltaTransferencia(Transferencia transferencia)
     {
         throw new NotImplementedException();
     }
+    public List<Transferencia> TransferenciasActivas() => ColeccionDesdeSP();
 
     //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
 }

@@ -125,7 +125,8 @@ VALUES (
         unPase,
         unaDefensa
     );
-    set unIdFutbolista = LAST_INSERT_ID();
+
+set unIdFutbolista = LAST_INSERT_ID();
 
 END $$ 
 
@@ -150,7 +151,9 @@ VALUES (
         unNombre,
         unaDescripcion
     );
+
 SET unIdHabilidad = LAST_INSERT_ID();
+
 END $$ # Nuevo SP Usuario
 DROP PROCEDURE
     IF EXISTS UsuarioPorIdUsuario $$
@@ -273,13 +276,11 @@ DELIMITER $$
 DROP PROCEDURE
     IF EXISTS TransferenciasActivas $$
 CREATE PROCEDURE
-    TransferenciasActivas (unidFutbolista INT) BEGIN
+    TransferenciasActivas () BEGIN
 SELECT *
 FROM Transferencia
 WHERE
     Confirmacion IS NULL
-    AND idFutbolista = unidFutbolista;
-
 END $$ -- PUNTO 4
 
 DELIMITER $$
@@ -291,18 +292,16 @@ CREATE FUNCTION
         unIdFutbolista INT,
         Inicio DATETIME,
         Fin DATETIME
-    ) RETURNS MEDIUMINT UNSIGNED READS SQL DATA
-BEGIN
-    DECLARE sumatoria MEDIUMINT UNSIGNED;
+    ) RETURNS MEDIUMINT UNSIGNED READS SQL DATA BEGIN DECLARE sumatoria MEDIUMINT UNSIGNED;
 
-    SELECT
-        SUM(PrecioMonedas) INTO sumatoria
-    FROM Transferencia
-    WHERE
-        idFutbolista = unIdFutbolista
-        AND Confirmacion BETWEEN Inicio AND Fin;
+SELECT
+    SUM(PrecioMonedas) INTO sumatoria
+FROM Transferencia
+WHERE
+    idFutbolista = unIdFutbolista
+    AND Confirmacion BETWEEN Inicio AND Fin;
 
-    RETURN sumatoria;
+RETURN sumatoria;
 
 END $$ 
 

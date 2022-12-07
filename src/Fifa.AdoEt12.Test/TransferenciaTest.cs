@@ -14,7 +14,7 @@ public class TransferenciaTest
     }
     //[Fact]
     //public void ObtenerTransferencias()
-   // {
+    // {
     //    var transferencia = Ado.MapTransferencia.FiltrarPorPK("idVendedor", 1);
     //    if (transferencia is null)
     //        throw new ArgumentNullException("Trasferencia no existe");
@@ -23,7 +23,7 @@ public class TransferenciaTest
     [Fact]
     public void TransferenciasActivas()
     {
-        var transferencia = Ado.MapTransferencia.FiltrarPorPK("idFutbolista", 1);
+        var transferencia = Ado.MapTransferencia.TransferenciasActivas();
         if (transferencia is null)
             throw new ArgumentNullException("Futbolista no esta en venta");
         Assert.True(transferencia.Confirmacion is null);

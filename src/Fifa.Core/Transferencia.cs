@@ -12,7 +12,7 @@ public class Transferencia
     public DateTime Publicacion { get; set; }
     public DateTime? Confirmacion { get; set; }
     public int PrecioMonedas { get; set; }
-    public Transferencia( Usuario vendedor, Usuario? comprador, Futbolista futbolista, DateTime publicacion, DateTime? confirmacion, int preciomonedas)
+    public Transferencia(Usuario vendedor, Usuario? comprador, Futbolista futbolista, DateTime publicacion, DateTime? confirmacion, int preciomonedas)
     {
         Vendedor = vendedor;
         Comprador = comprador;

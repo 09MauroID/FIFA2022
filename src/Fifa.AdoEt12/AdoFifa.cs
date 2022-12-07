@@ -48,6 +48,6 @@ public class AdoFifa : IAdo
         => MapTransferencia.AltaTransferencia(transferencia);
 
     public List<Transferencia> TransferenciasActivas()
-        => MapTransferencia.TransferenciasActivas();
+        => MapTransferencia.ColeccionDesdeSP();
 
 }
