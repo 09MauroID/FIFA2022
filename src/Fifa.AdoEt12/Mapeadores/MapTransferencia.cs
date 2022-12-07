@@ -102,15 +102,16 @@ public class MapTransferencia : Mapeador<Transferencia>
 
         return ElementoDesdeSP();
     }
-    public void TransferenciasActivas(Transferencia transferencia)
-        => EjecutarComandoCon("TransferenciasActivas", ConfigurarTransferenciasActivas, transferencia);
 
-    public void ConfigurarTransferenciasActivas(Transferencia transferencia)
+    // Consigna Diciembre: en base a un idFutbolista, se tiene que traer todas las publicaciones activas que tengan dicho futbolista en oferta.
+
+    public void TransferenciasActivas(int IdFutbolista)
     {
         SetComandoSP("TransferenciasActivas");
 
         BP.CrearParametro("unIdFutbolista")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int32)
+            .SetValor(IdFutbolista)
             .AgregarParametro();
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();

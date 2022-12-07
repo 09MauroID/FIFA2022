@@ -276,11 +276,13 @@ DELIMITER $$
 DROP PROCEDURE
     IF EXISTS TransferenciasActivas $$
 CREATE PROCEDURE
-    TransferenciasActivas () BEGIN
+    TransferenciasActivas (unidFutbolista INT) BEGIN
 SELECT *
 FROM Transferencia
 WHERE
     Confirmacion IS NULL
+    AND idFutbolista = unidFutbolista;
+
 END $$ -- PUNTO 4
 
 DELIMITER $$

@@ -25,7 +25,7 @@ public class Transferencia
     public Transferencia(int vendedor, Usuario? comprador, int futbolista, DateTime publicacion, DateTime? confirmacion, int preciomonedas)
     {
         this.vendedor = vendedor;
-        comprador = comprador;
+        Comprador = comprador;
         this.futbolista = futbolista;
         Publicacion = publicacion;
         Confirmacion = confirmacion;

@@ -5,7 +5,6 @@ namespace Fifa.AdoEt12.Test;
 
 public class TransferenciaTest
 {
-
     public AdoFifa Ado { get; set; }
     public TransferenciaTest()
     {
@@ -23,7 +22,7 @@ public class TransferenciaTest
     [Fact]
     public void TransferenciasActivas()
     {
-        var transferencia = Ado.MapTransferencia.TransferenciasActivas();
+        var transferencia = Ado.MapTransferencia.TransferenciasActivas(1);
         if (transferencia is null)
             throw new ArgumentNullException("Futbolista no esta en venta");
         Assert.True(transferencia.Confirmacion is null);
