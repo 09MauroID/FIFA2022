@@ -70,6 +70,8 @@ SELECT @Futbolista2;
 
 CALL altaPropietario (@idLuciaMijal22, @Futbolista1);
 
+CALL altaPropietario (@idIsmaJoel25, @Futbolista1);
+
 CALL altaSkill (@Habilidad1, @Futbolista1);
 
 CALL
@@ -79,7 +81,7 @@ CALL
         100,
         '2022-05-26 10:56:36'
     );
-
+CALL Publicar (@idIsmaJoel25, @Futbolista1, 120, '2022-06-26 10:56:36');
 CALL TransferenciasActivas (@Futbolista1);
 
 SELECT
@@ -95,6 +97,6 @@ SELECT
 --    Publicar (
 --        @idLuciaMijal22,
 --        @Futbolista1,
- --       10000,
+--       10000,
 --        '2022-08-04 14:52:23'
 --    );

@@ -116,11 +116,11 @@ public class MapTransferencia : Mapeador<Transferencia>
 
         return ColeccionDesdeSP();
     }
-    //public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
-    //internal void AltaTransferencia(Transferencia transferencia)
-    //{
-    //    throw new NotImplementedException();
-    //}
+    public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
+    internal void AltaTransferencia(Transferencia transferencia)
+    {
+        throw new NotImplementedException();
+    }
 
 
     //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
