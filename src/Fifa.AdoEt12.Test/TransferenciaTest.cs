@@ -19,12 +19,13 @@ public class TransferenciaTest
     //        throw new ArgumentNullException("Trasferencia no existe");
     //    Assert.True(transferencia.Vendedor == 1 && transferencia.Comprador == 2);
     //}
+    
     [Fact]
     public void TransferenciasActivas()
     {
-        var transferencia = Ado.MapTransferencia.TransferenciasActivas(1);
-        if (transferencia is null)
+        var transferencias = Ado.MapTransferencia.TransferenciasActivas(1);
+        if (transferencias is null)
             throw new ArgumentNullException("Futbolista no esta en venta");
-        Assert.True(transferencia.Confirmacion is null);
+        Assert.True(transferencias.Confirmacion is null);
     }
 }
