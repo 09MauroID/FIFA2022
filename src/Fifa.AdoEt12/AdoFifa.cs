@@ -23,31 +23,64 @@ public class AdoFifa : IAdo
     public void AltaHabilidad(Habilidad habilidad)
         => MapHabilidad.AltaHabilidad(habilidad);
 
+    public async Task AltaHabilidadAsync(Habilidad habilidad)
+    {
+        await MapHabilidad.AltaHabilidadAsync(habilidad);
+    }
+
     public List<Habilidad> ObtenerHabilidades()
         => MapHabilidad.ColeccionDesdeTabla();
+    
+    public Task<List<Habilidad>> ObtenerHabilidadesAsync()
+        => MapHabilidad.ColeccionDesdeTablaAsync();
 
     public void AltaPosicion(Posicion posicion)
         => MapPosicion.AltaPosicion(posicion);
+    public async Task AltaPosicionAsync(Posicion posicion)
+    {
+        await MapPosicion.AltaPosicionAsync(posicion);
+    }
 
     public List<Posicion> ObtenerPosiciones()
         => MapPosicion.ColeccionDesdeTabla();
+    public Task <List<Posicion>> ObtenerPosicionesAsync()
+        => MapPosicion.ColeccionDesdeTablaAsync();
 
     public void AltaUsuario(Usuario usuario)
         => MapUsuario.AltaUsuario(usuario);
-
+    public async Task AltaUsuarioAsync(Usuario usuario)
+    {
+        await MapUsuario.AltaUsuarioAsync(usuario);
+    }
     public List<Usuario> obtenerUsuarios()
         => MapUsuario.ColeccionDesdeTabla();
+
+    public Task<List<Usuario>> ObtenerUsuariosAsync()
+        => MapUsuario.ColeccionDesdeTablaAsync();
 
     public void AltaFutbolista(Futbolista futbolista)
         => MapFutbolista.AltaFutbolista(futbolista);
 
+    public async Task AltaFutbolistaAsync(Futbolista futbolista)
+    {
+        await MapFutbolista.AltaFutbolistaAsync(futbolista);
+    }
+
     public List<Futbolista> obtenerFutbolistas()
         => MapFutbolista.ColeccionDesdeTabla();
 
+    public Task<List<Futbolista>> ObtenerFutbolistasAsync()
+        => MapFutbolista.ColeccionDesdeTablaAsync();
+
     public void AltaTransferencia(Transferencia transferencia)
         => MapTransferencia.AltaTransferencia(transferencia);
-
+    
+    public async Task AltaTransferenciaAsync(Transferencia transferencia)
+    {
+        await MapTransferencia.AltaTransferencia(transferencia);
+    }
     public List<Transferencia> TransferenciasActivas()
         => MapTransferencia.ColeccionDesdeSP();
 
+    
 }

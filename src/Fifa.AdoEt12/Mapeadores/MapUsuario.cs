@@ -24,7 +24,10 @@ namespace Fifa.AdoEt12.Mapeadores
 
         public void AltaUsuario(Usuario usuario)
             => EjecutarComandoCon("altaUsuario", ConfigurarAltaUsuario, PostAltaUsuario, usuario);
-
+        internal async Task AltaUsuarioAsync(Usuario usuario)
+        {
+            await EjecutarComandoAsync("altaUsuario", ConfigurarAltaUsuario, PostAltaUsuario, usuario);
+        }
         public void ConfigurarAltaUsuario(Usuario usuario)
         {
             SetComandoSP("altaUsuario");

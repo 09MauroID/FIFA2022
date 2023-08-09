@@ -16,8 +16,14 @@ public class MapPosicion : Mapeador<Posicion>
             idPosicion: Convert.ToByte(fila["idPosicion"]),
             nombre: fila["nombre"].ToString()!
         );
+
     public void AltaPosicion(Posicion posicion)
         => EjecutarComandoCon("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
+    internal async Task AltaPosicionAsync(Posicion posicion)
+    {
+        await EjecutarComandoAsync("altaPosicion", ConfigurarAltaPosicion, PostAltaPosicion, posicion);
+    }
+
     public void ConfigurarAltaPosicion(Posicion posicion)
     {
         SetComandoSP("altaPosicion");

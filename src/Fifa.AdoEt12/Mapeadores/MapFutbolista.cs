@@ -30,7 +30,10 @@ public class MapFutbolista : Mapeador<Futbolista>
         );
     public void AltaFutbolista(Futbolista futbolista)
         => EjecutarComandoCon("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
-
+    internal async Task AltaFutbolistaAsync(Futbolista futbolista)
+    {
+        await EjecutarComandoAsync("altaFutbolista", ConfigurarAltaFutbolista, PostAltaFutbolista, futbolista);
+    }
     public void ConfigurarAltaFutbolista(Futbolista futbolista)
     {
         SetComandoSP("altaFutbolista");
@@ -117,4 +120,5 @@ public class MapFutbolista : Mapeador<Futbolista>
         //Devuelvo la lista que cree y complete.
         return futbolistas;
     }
+    
 }

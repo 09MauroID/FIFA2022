@@ -20,8 +20,12 @@ public class MapHabilidad : Mapeador<Habilidad>
             descripcion: fila["Descripcion"].ToString()
         );
     public void AltaHabilidad(Habilidad habilidad)
-        => EjecutarComandoCon("altaHablidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
+        => EjecutarComandoCon("altaHabilidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
 
+    internal async Task AltaHabilidadAsync(Habilidad habilidad)
+    {
+        await EjecutarComandoAsync("altaHabilidad", ConfigurarAltaHabilidad, PostAltaHabilidad, habilidad);
+    }
     private void PostAltaHabilidad(Habilidad habilidad)
     {
         var paramIdHabilidad = GetParametro("unIdHabilidad");
@@ -83,5 +87,7 @@ public class MapHabilidad : Mapeador<Habilidad>
         //Devuelvo la lista que cree y complete.
         return habilidades;
     }
+
+
 }
 
