@@ -34,6 +34,10 @@ public class MapTransferencia : Mapeador<Transferencia>
 
     public void Publicar(Transferencia transferencia)
         => EjecutarComandoCon("publicar", ConfigurarPublicar, transferencia);
+    internal async Task PublicarAsync(Transferencia transferencia)
+    {
+        await EjecutarComandoAsync("publicar", ConfigurarPublicar, transferencia);
+    }
 
     public void ConfigurarPublicar(Transferencia transferencia)
     {
@@ -117,11 +121,5 @@ public class MapTransferencia : Mapeador<Transferencia>
         return ColeccionDesdeSP();
     }
     public List<Transferencia> ObtenerTransferencias() => ColeccionDesdeTabla();
-    internal void AltaTransferencia(Transferencia transferencia)
-    {
-        throw new NotImplementedException();
-    }
-
-
     //public List<Transferencia> ObtenerTransferencias(Usuario usuario);
 }

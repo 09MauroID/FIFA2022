@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fifa.AdoEt12", "Fifa.AdoEt1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fifa.AdoEt12.Test", "Fifa.AdoEt12.Test\Fifa.AdoEt12.Test.csproj", "{2F969819-2A32-4CCA-83C0-AEE5D24A00A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fifa.Mvc", "Fifa.Mvc\Fifa.Mvc.csproj", "{216CB2E4-0165-4032-BA49-E28660E02BAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{2F969819-2A32-4CCA-83C0-AEE5D24A00A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F969819-2A32-4CCA-83C0-AEE5D24A00A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F969819-2A32-4CCA-83C0-AEE5D24A00A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216CB2E4-0165-4032-BA49-E28660E02BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216CB2E4-0165-4032-BA49-E28660E02BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216CB2E4-0165-4032-BA49-E28660E02BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216CB2E4-0165-4032-BA49-E28660E02BAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

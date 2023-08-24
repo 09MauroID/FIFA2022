@@ -73,14 +73,8 @@ public class AdoFifa : IAdo
         => MapFutbolista.ColeccionDesdeTablaAsync();
 
     public void AltaTransferencia(Transferencia transferencia)
-        => MapTransferencia.AltaTransferencia(transferencia);
-    
-    public async Task AltaTransferenciaAsync(Transferencia transferencia)
-    {
-        await MapTransferencia.AltaTransferencia(transferencia);
-    }
+        => MapTransferencia.Publicar(transferencia);
+
     public List<Transferencia> TransferenciasActivas()
         => MapTransferencia.ColeccionDesdeSP();
-
-    
 }
