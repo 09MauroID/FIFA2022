@@ -1,5 +1,4 @@
-﻿using et12.edu.ar.AGBD.Ado;
-using Fifa.AdoEt12.Mapeadores;
+﻿using Fifa.AdoEt12.Mapeadores;
 using Fifa.Core;
 
 namespace Fifa.AdoEt12;
@@ -30,7 +29,7 @@ public class AdoFifa : IAdo
 
     public List<Habilidad> ObtenerHabilidades()
         => MapHabilidad.ColeccionDesdeTabla();
-    
+
     public Task<List<Habilidad>> ObtenerHabilidadesAsync()
         => MapHabilidad.ColeccionDesdeTablaAsync();
 
@@ -43,7 +42,7 @@ public class AdoFifa : IAdo
 
     public List<Posicion> ObtenerPosiciones()
         => MapPosicion.ColeccionDesdeTabla();
-    public Task <List<Posicion>> ObtenerPosicionesAsync()
+    public Task<List<Posicion>> ObtenerPosicionesAsync()
         => MapPosicion.ColeccionDesdeTablaAsync();
 
     public void AltaUsuario(Usuario usuario)
@@ -74,6 +73,9 @@ public class AdoFifa : IAdo
 
     public void AltaTransferencia(Transferencia transferencia)
         => MapTransferencia.Publicar(transferencia);
+
+    public async Task AltaTransferenciaAsync(Transferencia transferencia)
+        => await MapTransferencia.PublicarAsync(transferencia);
 
     public List<Transferencia> TransferenciasActivas()
         => MapTransferencia.ColeccionDesdeSP();
