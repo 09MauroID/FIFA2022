@@ -1,4 +1,5 @@
-﻿using Fifa.AdoEt12.Mapeadores;
+﻿using et12.edu.ar.AGBD.Ado;
+using Fifa.AdoEt12.Mapeadores;
 using Fifa.Core;
 
 namespace Fifa.AdoEt12;
