@@ -8,4 +8,5 @@ public interface IAdo
     public Task<List<Habilidad>> ObtenerHabilidadesAsync();
     public void AltaTransferencia(Transferencia transferencia);
     Task AltaTransferenciaAsync(Transferencia transferencia);
+    public List<Usuario> ObtenerUsuarios();
 }

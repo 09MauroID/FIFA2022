@@ -52,7 +52,7 @@ public class AdoFifa : IAdo
     {
         await MapUsuario.AltaUsuarioAsync(usuario);
     }
-    public List<Usuario> obtenerUsuarios()
+    public List<Usuario> ObtenerUsuarios()
         => MapUsuario.ColeccionDesdeTabla();
 
     public Task<List<Usuario>> ObtenerUsuariosAsync()

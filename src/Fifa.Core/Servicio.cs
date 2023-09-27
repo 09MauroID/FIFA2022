@@ -37,5 +37,6 @@ public class Servicio
             throw new ArgumentException("Confirmación no debe tener valor");
             
     }
+    public List<Usuario> ObtenerUsuarios() => _ado.ObtenerUsuarios();
 
 }
