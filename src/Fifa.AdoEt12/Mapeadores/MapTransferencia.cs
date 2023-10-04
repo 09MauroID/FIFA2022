@@ -19,9 +19,9 @@ public class MapTransferencia : Mapeador<Transferencia>
     public override Transferencia ObjetoDesdeFila(DataRow fila)
     => new Transferencia
     (
-        vendedor: ToInt32(fila["idVendedor"]),
+        vendedor: MapUsuario.FiltrarPorPK("idUsuario",fila["idVendedor"])!b,
         comprador: CompradorNuLL(fila["idComprador"]),
-        futbolista: ToInt32(fila["idFutbolista"]),
+        futbolista: MapFutbolista.FiltrarPorPK("idFutbolista",fila["idFutbolista"])!,
         publicacion: ToDateTime(fila["publicacion"]),
         confirmacion: FechaONull(fila["confirmacion"]),
         preciomonedas: ToInt32(fila["preciomonedas"])

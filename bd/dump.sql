@@ -93,7 +93,7 @@ SELECT
 
 -- Ejemplos para romper y probar triggers
 
---CALL
+-- CALL
 --    Publicar (
 --        @idLuciaMijal22,
 --        @Futbolista1,

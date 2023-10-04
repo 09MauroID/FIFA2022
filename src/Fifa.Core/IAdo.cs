@@ -9,4 +9,5 @@ public interface IAdo
     public void AltaTransferencia(Transferencia transferencia);
     Task AltaTransferenciaAsync(Transferencia transferencia);
     public List<Usuario> ObtenerUsuarios();
+    public List<Futbolista> ObtenerFutbolistas();
 }

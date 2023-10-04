@@ -24,7 +24,7 @@ public class Servicio
     public void AltaTransferencia(Transferencia transferencia)
     {
         if (transferencia.Vendedor.IdUsuario != 0)
-            throw new ArgumentException("Vendedor, no debe tener valor");
+            throw new ArgumentException("Vendedor, debe tener valor");
 
         //Comprador pueder ser nulo? SI, TIENE QUE SER NULO
         if (transferencia.Comprador is not null)
@@ -38,5 +38,5 @@ public class Servicio
             
     }
     public List<Usuario> ObtenerUsuarios() => _ado.ObtenerUsuarios();
-
+    public List<Futbolista>ObtenerFutbolistas() => _ado.ObtenerFutbolistas();
 }

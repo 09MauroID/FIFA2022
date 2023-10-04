@@ -66,7 +66,7 @@ public class AdoFifa : IAdo
         await MapFutbolista.AltaFutbolistaAsync(futbolista);
     }
 
-    public List<Futbolista> obtenerFutbolistas()
+    public List<Futbolista> ObtenerFutbolistas()
         => MapFutbolista.ColeccionDesdeTabla();
 
     public Task<List<Futbolista>> ObtenerFutbolistasAsync()

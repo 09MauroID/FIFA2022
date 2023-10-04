@@ -34,10 +34,14 @@ public class ServicioTest
     [Fact]
     public void AltaTransferenciaNoValida()
     {
-        var luciaMijal = servicio.ObtenerUsuarios().First(u=>u.User == "LuciaMijal22");
+        var LuciaMijal = servicio.ObtenerUsuarios().FirstOrDefault(u=>u.User == "LuciaMijal22");
+        var IsmaJoel25 = servicio.ObtenerUsuarios().FirstOrDefault(u=>u.User == "IsmaJoel25");
+        var Futbolista1 = servicio.ObtenerFutbolistas().FirstOrDefault(f=>f.IdFutbolista == 1);
         
-        //var excep = Assert.Throws<ArgumentException>(()=>servicio.AltaTransferencia(transferencia));
-    
-        //transferencia.Vendedor.IdUsuario = 0;
+        var trans1 = new Transferencia(LuciaMijal, IsmaJoel25, Futbolista1, DateTime.Now, null, 250);
+        
+        var excep = Assert.Throws<ArgumentException>(()=>servicio.AltaTransferencia(trans1));
+        
+        Assert.Equal("Vendedor, debe tener valor",excep.Message);
     }
 }
