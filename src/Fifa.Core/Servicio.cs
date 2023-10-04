@@ -23,7 +23,7 @@ public class Servicio
 
     public void AltaTransferencia(Transferencia transferencia)
     {
-        if (transferencia.Vendedor.IdUsuario != 0)
+        if (transferencia.Vendedor.IdUsuario == 0)
             throw new ArgumentException("Vendedor, debe tener valor");
 
         //Comprador pueder ser nulo? SI, TIENE QUE SER NULO
@@ -33,10 +33,10 @@ public class Servicio
         if (transferencia.PrecioMonedas <= 0)
             throw new ArgumentException("Precio monedas no puede ser nulo o negativo");
 
-        if (transferencia.Confirmacion is not null)
+        if (transferencia.Confirmacion is not null || transferencia.Confirmacion > transferencia.Publicacion)
             throw new ArgumentException("Confirmación no debe tener valor");
-            
+
     }
     public List<Usuario> ObtenerUsuarios() => _ado.ObtenerUsuarios();
-    public List<Futbolista>ObtenerFutbolistas() => _ado.ObtenerFutbolistas();
+    public List<Futbolista> ObtenerFutbolistas() => _ado.ObtenerFutbolistas();
 }
