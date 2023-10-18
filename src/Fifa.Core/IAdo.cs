@@ -9,5 +9,16 @@ public interface IAdo
     public void AltaTransferencia(Transferencia transferencia);
     Task AltaTransferenciaAsync(Transferencia transferencia);
     public List<Usuario> ObtenerUsuarios();
-    public List<Futbolista> ObtenerFutbolistas();
+    public void ObtenerPosiciones(Posicion posicion);
+    public Task<List<Posicion>> ObtenerPosicionesASync();
+    public void ObtenerFutbolistas(Futbolista futbolista);
+    public Task<List<Futbolista>> ObtenerFutbolistasAync();
+    public void AltaUsuario(Usuario usuario);
+    Task AltaUsuarioAsync(Usuario Usuario);
+    public void AltaFutbolista(Futbolista futbolista);
+    Task AltaFutbolistaAsync(Futbolista futbolista);
+    public List<Posicion> ObtenerPosiciones();
+    public Task<List<Posicion>> ObtenerPosicionesAsync();
+    public List<Transferencia> TransferenciasActivas();
+
 }
