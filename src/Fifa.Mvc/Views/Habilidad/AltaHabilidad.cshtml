@@ -1,0 +1,30 @@
+@using Fifa.Core;
+@model Habilidad;
+@{
+    ViewData["Title"] = "Alta Habilidad";
+}
+
+<form asp-controller="Habilidad" asp-action="AltaPais" method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="IdHabilidad" /></div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Nombre" class="col-form-label">Nombre</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+    </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Descripcion" class="col-form-label">Descripcion</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Descripcion" class="form-control" />
+        </div>
+    </div>
+    <div class="row g-3 align-items-center">
+        <button type="submit" class="btn btn-primary">Alta</button>
+    </div>
+
+</form>
