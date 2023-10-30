@@ -5,7 +5,7 @@ public class PosicionController : Controller
 {
     public PosicionController(ILogger<PosicionController> logger)
     {
-    
+
     }
 
     public IActionResult Index()
@@ -13,7 +13,7 @@ public class PosicionController : Controller
         return View();
     }
     [HttpGet]
-    public IActionResult Alta() => ViewComponent("AltaPosicion");
+    public IActionResult Alta() => View();
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

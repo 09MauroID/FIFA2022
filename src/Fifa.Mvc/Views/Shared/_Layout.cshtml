@@ -22,62 +22,68 @@
                 </button>
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav"></ul>
-                        
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarPosicionMenu" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Posicion
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarPosicionMenu">
-                                <li><a class="dropdown-item" asp-controller="Posicion" asp-action="Index"><i class="bi bi-list-nested"></i> Listado</a></li>                                
-                                <li><a class="dropdown-item" asp-controller="Posicion" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
-                            </ul>
-                        
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarHabilidadMenu" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Habilidad
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarHabilidadMenu">
-                                <li><a class="dropdown-item" asp-controller="Habilidad" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado</a></li>                           
-                                <li><a class="dropdown-item" asp-controller="Habilidad" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
-                            </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarPosicionMenu" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Posicion
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarPosicionMenu">
+                            <li><a class="dropdown-item" asp-controller="Posicion" asp-action="Index"><i
+                                        class="bi bi-list-nested"></i> Listado</a></li>
+                            <li><a class="dropdown-item" asp-controller="Posicion" asp-action="Alta"><i
+                                        class="bi bi-plus-circle"></i> Alta</a></li>
+                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarHabilidadMenu" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Habilidad
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarHabilidadMenu">
+                            <li><a class="dropdown-item" asp-controller="Habilidad" asp-action="Listado"><i
+                                        class="bi bi-list-nested"></i> Listado</a></li>
+                            <li><a class="dropdown-item" asp-controller="Habilidad" asp-action="Alta"><i
+                                        class="bi bi-plus-circle"></i> Alta</a></li>
+                        </ul>
 
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarFutbolistaMenu" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Futbolista
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarFutbolistaMenu">
-                                <li><a class="dropdown-item" asp-controller="Futbolista" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado</a></li>                                
-                                <li><a class="dropdown-item" asp-controller="Futbolista" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
-                            </ul>
-                        
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarTransferenciaMenu" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Transferencia
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarTransferenciaMenu">
-                                <li><a class="dropdown-item" asp-controller="Transferencia" asp-action="Vendedor"><i class="bi bi-list-nested"></i> Vendedor</a></li>                                
-                                <li><a class="dropdown-item" asp-controller="Transferencia" asp-action="Comprador"><i class="bi bi-list-nested"></i> Comprador</a></li>
-                            </ul>
-                            
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarEquipoMenu" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                            
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
-                                <li><a class="dropdown-item" asp-controller="TipoFutbolista" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado Tipos</a></li>                                
-                                <li><a class="dropdown-item" asp-controller="TipoFutbolista" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta Tipo</a></li>
-                            </ul>
-                        </li>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarFutbolistaMenu" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Futbolista
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarFutbolistaMenu">
+                            <li><a class="dropdown-item" asp-controller="Futbolista" asp-action="Listado"><i
+                                        class="bi bi-list-nested"></i> Listado</a></li>
+                            <li><a class="dropdown-item" asp-controller="Futbolista" asp-action="Alta"><i
+                                        class="bi bi-plus-circle"></i> Alta</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarTransferenciaMenu" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Transferencia
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarTransferenciaMenu">
+                            <li><a class="dropdown-item" asp-controller="Transferencia" asp-action="Vendedor"><i
+                                        class="bi bi-list-nested"></i> Vendedor</a></li>
+                            <li><a class="dropdown-item" asp-controller="Transferencia" asp-action="Comprador"><i
+                                        class="bi bi-list-nested"></i> Comprador</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarEquipoMenu" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
+                            <li><a class="dropdown-item" asp-controller="TipoFutbolista" asp-action="Listado"><i
+                                        class="bi bi-list-nested"></i> Listado Tipos</a></li>
+                            <li><a class="dropdown-item" asp-controller="TipoFutbolista" asp-action="Alta"><i
+                                        class="bi bi-plus-circle"></i> Alta Tipo</a></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
         </nav>
@@ -90,9 +96,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - FIFA - 
+            &copy; 2022 - FIFA -
         </div>
-    </footer> 
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
