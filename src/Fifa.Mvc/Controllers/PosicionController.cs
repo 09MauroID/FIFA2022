@@ -1,3 +1,4 @@
+using Fifa.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fifa.Mvc.Controllers;
@@ -10,14 +11,14 @@ public class PosicionController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        //Magia para recibir una lista de posiciones
+        var posiciones = new List<Posicion>
+        {
+            new Posicion(1, "Defensor")
+        };
+        return View("Listado", posiciones);
     }
+
     [HttpGet]
     public IActionResult Alta() => View();
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View("Error!");
-    }
 }

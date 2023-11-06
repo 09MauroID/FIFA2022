@@ -1,0 +1,12 @@
+@using Fifa.Core;
+@model IEnumerable<Posicion>;
+@{
+    ViewData["Title"] = "Posiciones";
+}
+
+<ul>
+    @foreach (var posicion in Model)
+    {
+        <li>@posicion.Nombre</li>
+    }
+</ul>

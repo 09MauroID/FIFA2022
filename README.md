@@ -37,7 +37,7 @@ git clone https://github.com/ET12DE1Computacion/simpleTemplateCSharp
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre que cosas se debe instalar, configurar y como hacer deploy_
+- Antes de correr el proyecto de C#, correr el script [install.sql](/bd/install.sql).
 
 ## Construido con 🛠️
 
