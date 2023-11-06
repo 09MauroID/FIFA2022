@@ -1,0 +1,13 @@
+@using Fifa.Core;
+@model IEnumerable<Habilidad>;
+@{
+    ViewData["Title"] = "Habilidades";
+}
+
+<ul>
+    @foreach (var habilidad in Model)
+    {
+        <li>@habilidad.Nombre</li>
+        <li>@habilidad.Descripcion</li>
+    }
+</ul>
