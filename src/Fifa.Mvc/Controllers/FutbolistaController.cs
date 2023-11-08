@@ -1,3 +1,4 @@
+using AspNetCore;
 using Fifa.Core;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,4 +16,7 @@ public class FutbolistaController : Controller
 
     [HttpGet]
     public IActionResult Alta() => View();
+
+    [HttpPost]
+    public ActionResult Post ([FromBody] Views_Futbolista_Alta Futbolista)
 }
