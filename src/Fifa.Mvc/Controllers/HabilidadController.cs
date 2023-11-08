@@ -5,17 +5,12 @@ namespace Fifa.Mvc.Controllers;
 public class HabilidadController : Controller
 {
 
-    public HabilidadController(ILogger<HabilidadController> logger)
-    {
-
-    }
+    private readonly Servicio _servicio;
+    public HabilidadController(Servicio servicio) => _servicio = servicio;
 
     public IActionResult Index()
     {
-        var habilidades = new List<Habilidad>
-        {
-            new Habilidad(1, "Correcaminos", "Velocista")
-        };
+        var habilidades = _servicio.ObtenerHabilidades();
         return View("Listado", habilidades);
     }
     

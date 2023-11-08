@@ -1,0 +1,19 @@
+@using Fifa.Core;
+@model IEnumerable<Futbolista>;
+@{
+    ViewData["Title"] = "Futbolistas";
+}
+
+<ul>
+    @foreach (var futbolista in Model)
+    {
+        <li>@futbolista.Nombre</li>
+        <li>@futbolista.Apellido</li>
+        <li>@futbolista.Nacimiento</li>
+        <li>@futbolista.Velocidad</li>
+        <li>@futbolista.Remate</li>
+        <li>@futbolista.Pase</li>
+        <li>@futbolista.Defensa</li>
+        <li>@futbolista.Posicion</li>
+    }
+</ul>

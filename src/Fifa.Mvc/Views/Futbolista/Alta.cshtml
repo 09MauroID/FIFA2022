@@ -1,0 +1,78 @@
+@using Fifa.Core;
+@model Futbolista;
+@{
+    ViewData["Title"] = "Alta Futbolista";
+}
+
+<form asp-controller="Futbolista" asp-action="AltaFutbolista" method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="IdFutbolista" /></div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Nombre" class="col-form-label">Nombre</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Apellido" class="col-form-label">Apellido</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Apellido" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Nacimiento" class="col-form-label">Nacimiento</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Nacimiento" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Velocidad" class="col-form-label">Velocidad</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Velocidad" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Remate" class="col-form-label">Remate</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Remate" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Pase" class="col-form-label">Pase</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Pase" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Defensa" class="col-form-label">Defensa</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Defensa" class="form-control" />
+        </div>
+        </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Posicion" class="col-form-label">Posicion</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Posicion" class="form-control" />
+        </div>
+    </div>
+    <div class="row g-3 align-items-center">
+        <button type="submit" class="btn btn-primary">Alta</button>
+    </div>
+
+</form>

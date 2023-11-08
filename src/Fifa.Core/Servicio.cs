@@ -1,5 +1,3 @@
-using System.IO.Compression;
-
 namespace Fifa.Core;
 
 public class Servicio
@@ -39,4 +37,5 @@ public class Servicio
     }
     public List<Usuario> ObtenerUsuarios() => _ado.ObtenerUsuarios();
     public List<Futbolista> ObtenerFutbolistas() => _ado.ObtenerFutbolistas();
+    public List<Posicion> ObtenerPosiciones() => _ado.ObtenerPosiciones();
 }

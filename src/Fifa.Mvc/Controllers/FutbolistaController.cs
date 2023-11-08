@@ -2,15 +2,15 @@ using Fifa.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fifa.Mvc.Controllers;
-public class PosicionController : Controller
+public class FutbolistaController : Controller
 {
     private readonly Servicio _servicio;
-    public PosicionController(Servicio servicio) => _servicio = servicio;
+    public FutbolistaController(Servicio servicio) => _servicio = servicio;
 
     public IActionResult Index()
     {
-        var posiciones = _servicio.ObtenerPosiciones();
-        return View("Listado", posiciones);
+        var futbolistas = _servicio.ObtenerFutbolistas();
+        return View("Listado", futbolistas);
     }
 
     [HttpGet]
