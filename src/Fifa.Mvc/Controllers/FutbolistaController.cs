@@ -18,5 +18,9 @@ public class FutbolistaController : Controller
     public IActionResult Alta() => View();
 
     [HttpPost]
-    public ActionResult Post ([FromBody] Views_Futbolista_Alta Futbolista)
+    public ActionResult Post([FromBody] Views_Futbolista_Alta Futbolista)
+    {
+
+        return NotFound();
+    }
 }
