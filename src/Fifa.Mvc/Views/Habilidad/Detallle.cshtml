@@ -1,11 +1,11 @@
 @using Fifa.Core;
-@model Habilidad
+@model IEnumerable<Habilidad>
 @{
     ViewData["Title"] = "Detalle Habilidad";
 }
-@foreach (var equipo in Model.Equipos)
-{
-    <tr>
-        <th scope="row"><a asp-controller="Equipo" asp-action="Detalle" asp-route-Id="@equipo.Id">@equipo.Nombre</a></th>
-    <tr>
-        }
+<ul>
+    @foreach (var habilidad in Model)
+    {
+        <th scope="row"><a asp-asp-controller="Habilidad" asp-action="Detalle" asp-route-id="@habilidad.IdHabilidad">@habilidad.Nombre</a></th>
+    }
+<ul>
