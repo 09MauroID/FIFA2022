@@ -7,8 +7,8 @@ namespace Fifa.Mvc.ViewModels
     {
         public SelectList? Posiciones { get; set; }
         public byte IdFutbolista { get; set; }
-        public string Nombre { get; set;}
-        public string Apellido  { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public DateTime Nacimiento { get; set; }
         public byte Velocidad { get; set; }
         public byte Remate { get; set; }
@@ -16,7 +16,7 @@ namespace Fifa.Mvc.ViewModels
         public byte Defensa { get; set; }
 
         public VMFutbolista() { }
-        public VMFutbolista (IEnumerable<Posicion> posiciones)
+        public VMFutbolista(IEnumerable<Posicion> posiciones)
         {
             Posiciones = new SelectList(posiciones,
                                         dataTextField: nameof(Posicion.Nombre),
@@ -28,10 +28,9 @@ namespace Fifa.Mvc.ViewModels
                                         dataTextField: nameof(Posicion.Nombre),
                                         dataValueField: nameof(Posicion.IdPosicion),
                                         selectedValue: futbolista.IdFutbolista);
-            
+
             Nombre = futbolista.Nombre;
             Apellido = futbolista.Apellido;
-            Nacimiento = DateTime.Now(Nacimiento);
         }
     }
 }
