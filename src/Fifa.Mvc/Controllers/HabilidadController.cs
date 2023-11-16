@@ -1,5 +1,6 @@
 using Fifa.Core;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Fifa.Mvc.Controllers;
 public class HabilidadController : Controller
@@ -16,4 +17,17 @@ public class HabilidadController : Controller
     
     [HttpGet]
     public IActionResult Alta() => View();
+
+
+    [HttpGet]
+    public async Task<IActionResult> Detalle(byte? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+        
+        var habilidad = (await _servicio.ObtenerHabilidadesAsync())
+            .FirstOrDefault(h=>h.IdHabilidad == id);
+        
+        return habilidad is null ? NotFound() : View(habilidad);
+    }
 }

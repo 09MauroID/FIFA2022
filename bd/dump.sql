@@ -27,6 +27,8 @@ CALL altaPosicion (@Posicion1, 'Defensa');
 CALL altaPosicion (@Posicion2, 'Delantero');
 
 CALL altaHabilidad (@Habilidad1, 'Muralla', 'Ultima defensa');
+CALL altaHabilidad (@Habilidad2, 'Correcaminos', 'Velocista');
+CALL altaHabilidad (@Habilidad3, 'Cazador', 'Prediccion');
 
 SELECT @Posicion1;
 
